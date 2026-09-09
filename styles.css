@@ -21,7 +21,6 @@
   --sans:   'Manrope', system-ui, -apple-system, 'Segoe UI', sans-serif;
   --serif:  'Playfair Display', Georgia, 'Times New Roman', serif;
   --brand:  'Unbounded', 'Manrope', system-ui, sans-serif;
-  --script: 'Caveat', 'Segoe Script', cursive;
 
   --gap: clamp(16px, 2vw, 24px);
   --gutter: clamp(20px, 4vw, 40px);
@@ -296,6 +295,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .hero__photo::after{
   content:"";
   position:absolute;inset:0;
+  z-index:1;
   background:linear-gradient(to bottom, rgba(12,10,8,.44) 0%, rgba(12,10,8,.14) 40%, rgba(12,10,8,0) 64%);
   pointer-events:none;
 }
@@ -340,17 +340,13 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 }
 .hero__title-2{padding-left:.06em}
 
-/* рукописний акцент — головний характер першого екрана */
+/* третій рядок — курсив тієї ж антикви */
 .hero__script{
-  font-family:var(--script);
-  font-weight:600;
-  font-size:1.46em;
-  line-height:.94;
-  letter-spacing:0;
-  margin-top:.1em;
-  padding-left:.04em;
-  position:relative;
-  display:inline-block;
+  font-style:italic;
+  font-weight:400;
+  font-size:1.04em;
+  line-height:1.06;
+  margin-top:.04em;
   width:fit-content;
 }
 
@@ -396,32 +392,6 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   color:var(--muted);
   margin-left:6px;
 }
-
-/* ---------- поява першого екрана ---------- */
-
-.hero__eyebrow,
-.hero__title-1,
-.hero__title-2,
-.hero__script,
-.hero__lead,
-.btn--hero,
-.hero__route,
-.hero__awards,
-.quote-card,
-.hero__author{
-  animation:heroIn .85s cubic-bezier(.2,.8,.3,1) both;
-}
-.hero__eyebrow{animation-delay:.05s}
-.hero__title-1{animation-delay:.14s}
-.hero__title-2{animation-delay:.22s}
-.hero__script{animation-delay:.3s}
-.hero__lead{animation-delay:.4s}
-.btn--hero{animation-delay:.48s}
-.hero__route{animation-delay:.56s}
-.hero__awards{animation-delay:.5s}
-.quote-card{animation-delay:.62s}
-.hero__author{animation-delay:.7s}
-@keyframes heroIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
 
 /* ---------- нагороди (лежать на фото, тому світлі) ---------- */
 
@@ -470,14 +440,14 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   text-wrap:balance;
 }
 
-/* ---------- картка з цитатою та підпис засновниці ---------- */
+/* ---------- картка з місією та плашка на фото ---------- */
 
 .quote-card{
   position:absolute;
   z-index:4;
   right:clamp(150px, 17vw, 260px);
   bottom:clamp(118px, 14vw, 200px);
-  width:min(286px, 30vw);
+  width:min(300px, 31vw);
   background:rgba(255,255,255,.95);
   backdrop-filter:blur(8px);
   border-radius:var(--r-s);
@@ -486,34 +456,77 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 }
 .quote-card__who{
   display:block;
-  font-size:11.5px;
-  font-weight:600;
-  margin-bottom:8px;
+  font-family:var(--brand);
+  font-size:8.5px;
+  font-weight:500;
+  letter-spacing:.24em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-bottom:10px;
 }
 .quote-card blockquote{
-  font-size:12px;
-  line-height:1.55;
-  color:var(--muted);
+  font-size:12.5px;
+  line-height:1.6;
+  color:var(--ink-80);
 }
 
-.hero__author{
+.hero__plate{
   position:absolute;
-  z-index:4;
-  right:clamp(176px, 19.5vw, 300px);
-  bottom:clamp(48px, 6.6vw, 104px);
+  z-index:2;
+  left:clamp(18px,2vw,30px);
+  bottom:clamp(18px,2.4vw,32px);
   display:flex;
   flex-direction:column;
-  gap:4px;
-  pointer-events:none;
-  text-shadow:0 1px 16px rgba(0,0,0,.5);
+  gap:5px;
+  padding:15px 22px 16px;
+  border-radius:var(--r-s);
+  background:rgba(255,255,255,.13);
+  border:1px solid rgba(255,255,255,.24);
+  backdrop-filter:blur(16px) saturate(1.25);
+  -webkit-backdrop-filter:blur(16px) saturate(1.25);
+  box-shadow:0 18px 40px -24px rgba(0,0,0,.7);
 }
-.hero__author-name{
-  font-size:clamp(17px,1.6vw,21px);
+.hero__plate-name{
+  font-family:var(--serif);
+  font-size:clamp(17px,1.5vw,20px);
   font-weight:500;
-  line-height:1.2;
-  color:rgba(255,255,255,.92);
+  letter-spacing:-.01em;
+  color:#fff;
 }
-.hero__author-role{font-size:13px;color:rgba(255,255,255,.65)}
+.hero__plate-role{
+  font-family:var(--brand);
+  font-size:8.5px;
+  font-weight:500;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:rgba(255,255,255,.72);
+}
+
+/* ---------- поява першого екрана ---------- */
+
+.hero__eyebrow,
+.hero__title-1,
+.hero__title-2,
+.hero__script,
+.hero__lead,
+.btn--hero,
+.hero__route,
+.hero__awards,
+.quote-card,
+.hero__plate{
+  animation:heroIn .85s cubic-bezier(.2,.8,.3,1) both;
+}
+.hero__eyebrow{animation-delay:.05s}
+.hero__title-1{animation-delay:.14s}
+.hero__title-2{animation-delay:.22s}
+.hero__script{animation-delay:.3s}
+.hero__lead{animation-delay:.4s}
+.btn--hero{animation-delay:.48s}
+.hero__route{animation-delay:.56s}
+.hero__awards{animation-delay:.5s}
+.quote-card{animation-delay:.62s}
+.hero__plate{animation-delay:.72s}
+@keyframes heroIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
 
 /* ---------- хвиля на стику з наступною секцією ---------- */
 
@@ -1299,6 +1312,7 @@ img.ph--contact{object-position:50% 18%;filter:grayscale(1) contrast(1.04)}
     overflow:hidden;
   }
   .hero__photo img{object-position:40% 22%}
+  .hero__plate{left:clamp(16px,3vw,26px);bottom:clamp(16px,3vw,26px)}
   .hero__photo::after{background:linear-gradient(to bottom, rgba(12,10,8,.38) 0%, rgba(12,10,8,0) 55%)}
 
   .hero__awards{
@@ -1326,16 +1340,6 @@ img.ph--contact{object-position:50% 18%;filter:grayscale(1) contrast(1.04)}
     margin:clamp(24px,4vw,36px) auto 0;
     box-shadow:var(--shadow);
   }
-  .hero__author{
-    order:5;
-    position:static;
-    align-items:center;
-    text-align:center;
-    margin:16px auto 0;
-    text-shadow:none;
-  }
-  .hero__author-name{color:var(--ink)}
-  .hero__author-role{color:var(--muted)}
 
   .hero__curve{display:none}
 
@@ -1351,37 +1355,94 @@ img.ph--contact{object-position:50% 18%;filter:grayscale(1) contrast(1.04)}
 @media (max-width: 900px){
   .cards{grid-template-columns:repeat(2,minmax(0,1fr))}
   .clients{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .full-cycle{display:block}
   .full-cycle .dash{display:none}
   .review{flex:0 0 100%}
   .footer__grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:32px}
 }
 
 @media (max-width: 620px){
-  .cards{grid-template-columns:minmax(0,1fr)}
-  .card{min-height:0;padding:26px 24px 28px}
-  .clients{gap:12px}
+  /* ---- перший екран ---- */
+  .hero{padding-bottom:clamp(48px,10vw,72px)}
+  .hero__title{font-size:clamp(38px,9.4vw,52px);line-height:1.03}
+  .hero__lead{font-size:15px}
+  .btn--hero{width:100%;padding:20px 32px}
+  .hero__route{max-width:none;padding-top:30px}
+  .hero__route-text{font-size:8px;letter-spacing:.16em}
+
+  /* фото на всю ширину екрана — головний акцент мобільної версії */
+  .hero__photo{
+    margin-inline:0;
+    border-radius:0;
+    aspect-ratio:4/5;
+  }
+  .hero__photo img{object-position:42% 20%}
+  .hero__plate{
+    left:var(--gutter);
+    bottom:var(--gutter);
+    padding:13px 18px 14px;
+  }
+  .hero__plate-name{font-size:18px}
+
+  .hero__awards{gap:20px}
+  .award{flex:1 1 100%;max-width:290px}
+  .quote-card{width:min(340px,92%)}
+
+  /* ---- послуги: горизонтальна стрічка з прилипанням ---- */
+  .cards{
+    display:flex;
+    gap:12px;
+    overflow-x:auto;
+    scroll-snap-type:x mandatory;
+    margin-inline:calc(-1 * var(--gutter));
+    padding:2px var(--gutter) 8px;
+    scroll-padding-left:var(--gutter);
+    scrollbar-width:none;
+    -webkit-overflow-scrolling:touch;
+  }
+  .cards::-webkit-scrollbar{display:none}
+  .card{
+    flex:0 0 76%;
+    scroll-snap-align:start;
+    min-height:0;
+    padding:26px 24px 28px;
+  }
+  .card h3{margin-top:26px}
+  .full-cycle{font-size:19px;margin-top:30px}
+
+  /* ---- ланцюжок підходу теж горизонтальний ---- */
+  .steps{
+    flex-wrap:nowrap;
+    overflow-x:auto;
+    scroll-snap-type:x proximity;
+    margin-inline:calc(-1 * var(--gutter));
+    padding:2px var(--gutter) 6px;
+    scrollbar-width:none;
+  }
+  .steps::-webkit-scrollbar{display:none}
+  .steps li{flex:none;scroll-snap-align:start;font-size:13px;padding:10px 18px 10px 14px}
+
+  /* ---- решта ---- */
+  .gallery{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .tile__cap{font-size:12px;left:12px;bottom:12px;padding-right:30px}
+  .tile__arrow{width:20px;height:20px;right:10px;bottom:10px}
+  .clients{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
   .client{padding:22px 14px 20px}
   .client__ava{width:60px;height:60px}
-  .card h3{margin-top:26px}
-  .gallery{grid-template-columns:repeat(2,minmax(0,1fr))}
   .ai-plate{grid-template-columns:minmax(0,1fr)}
-  .steps li{font-size:13px;padding:10px 18px 10px 14px}
   .chips li{padding:9px 16px;font-size:12.5px}
   .founder__stamp{width:84px;height:84px;right:-8px;bottom:-12px;font-size:8px}
   .section--dark{border-radius:20px;margin:0}
   .footer__bottom{justify-content:flex-start;flex-direction:column;gap:8px}
   .slider__arrow{display:none}
-  .quote-card{width:min(320px,92%)}
-  .hero__photo{aspect-ratio:4/5}
-  .btn--hero{width:100%}
-  .award{flex:1 1 100%;max-width:280px}
   .section__actions{width:100%}
   .section__actions .btn{flex:1 1 100%}
+  .reveal-text{font-size:clamp(22px,6.4vw,30px)}
 }
 
 @media (prefers-reduced-motion: reduce){
   .hero__eyebrow,.hero__title-1,.hero__title-2,.hero__script,.hero__lead,
-  .btn--hero,.hero__route,.hero__awards,.quote-card,.hero__author,
+  .btn--hero,.hero__route,.hero__awards,.quote-card,.hero__plate,
   .hero__photo img{animation:none}
   *{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}
   html{scroll-behavior:auto}
