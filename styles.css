@@ -737,6 +737,172 @@ img.ph--contact{object-position:50% 18%;filter:grayscale(1) contrast(1.04)}
 .client__niche{font-size:12px;color:var(--muted)}
 
 /* =========================================================
+   ABOUT — про агенцію
+   ========================================================= */
+
+.about{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(0,.92fr);
+  gap:clamp(28px,5vw,72px);
+  align-items:center;
+}
+.ph--about{aspect-ratio:4/3}
+.about__claim{
+  margin-top:6px;
+  font-family:var(--serif);
+  font-size:clamp(26px,3.4vw,44px);
+  line-height:1.08;
+  letter-spacing:-.02em;
+  text-wrap:balance;
+}
+.about__text{
+  margin-top:20px;
+  font-size:16px;
+  line-height:1.62;
+  color:var(--ink-80);
+  max-width:46ch;
+}
+.about__list{
+  margin-top:26px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+}
+.about__list li{
+  border:1px solid var(--line);
+  border-radius:999px;
+  padding:9px 18px;
+  font-size:13px;
+  color:var(--ink-80);
+  background:var(--card);
+}
+
+/* =========================================================
+   AUDIENCE — для кого ми працюємо
+   ========================================================= */
+
+.audience{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:var(--gap);
+}
+.aud{
+  background:var(--card);
+  border-radius:var(--r);
+  padding:14px 14px 24px;
+  transition:transform .35s cubic-bezier(.2,.8,.3,1), box-shadow .35s;
+}
+.aud:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
+.aud__ph{aspect-ratio:4/3;border-radius:calc(var(--r) - 8px)}
+.aud h3{
+  margin-top:18px;
+  padding-inline:8px;
+  font-family:var(--serif);
+  font-size:22px;
+  font-weight:500;
+  letter-spacing:-.01em;
+}
+.aud p{
+  margin-top:8px;
+  padding-inline:8px;
+  font-size:13.5px;
+  line-height:1.5;
+  color:var(--muted);
+}
+
+/* =========================================================
+   FLOW — наша система
+   ========================================================= */
+
+.flow{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:4px;
+}
+.flow__node{
+  width:100%;
+  border:1px solid var(--line-dark);
+  border-radius:var(--r-s);
+  padding:20px 24px;
+  text-align:center;
+  display:flex;
+  flex-direction:column;
+  gap:5px;
+  transition:background .3s, border-color .3s;
+}
+.flow__node:hover{background:rgba(245,243,240,.05);border-color:rgba(245,243,240,.28)}
+.flow__node b{
+  font-family:var(--serif);
+  font-size:clamp(17px,1.9vw,23px);
+  font-weight:500;
+  letter-spacing:-.01em;
+}
+.flow__node span{font-size:12.5px;color:rgba(245,243,240,.55)}
+.flow__node--wide{max-width:560px}
+.flow__node--goal{
+  background:rgba(245,243,240,.07);
+  border-color:rgba(245,243,240,.34);
+}
+.flow__row{
+  width:100%;
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:10px;
+}
+.flow__row .flow__node{padding:18px 16px}
+.flow__row .flow__node b{font-size:clamp(14px,1.4vw,16.5px);font-family:var(--sans);font-weight:500}
+.flow__arrow{
+  width:12px;
+  height:34px;
+  color:rgba(245,243,240,.45);
+  flex:none;
+}
+
+/* =========================================================
+   EXPERT REELS DAY
+   ========================================================= */
+
+.section--reels{background:var(--paper-2)}
+.reels{
+  display:grid;
+  grid-template-columns:minmax(0,.92fr) minmax(0,1fr);
+  gap:clamp(28px,5vw,72px);
+  align-items:center;
+}
+.reels__copy .h2{margin-top:4px;line-height:1}
+.reels__claim{
+  margin-top:22px;
+  font-family:var(--serif);
+  font-style:italic;
+  font-size:clamp(19px,2.2vw,26px);
+}
+.reels__sub{
+  margin-top:28px;
+  font-family:var(--brand);
+  font-size:9px;
+  font-weight:500;
+  letter-spacing:.26em;
+  text-transform:uppercase;
+  color:var(--muted);
+}
+.reels__list{margin-top:14px;display:grid;gap:9px}
+.reels__list li{
+  position:relative;
+  padding-left:24px;
+  font-size:15px;
+  color:var(--ink-80);
+}
+.reels__list li::before{
+  content:"";
+  position:absolute;left:0;top:11px;
+  width:12px;height:1px;
+  background:var(--ink);
+}
+.reels .btn{margin-top:30px}
+.ph--reels{aspect-ratio:4/3}
+
+/* =========================================================
    POINT B
    ========================================================= */
 
@@ -1285,6 +1451,7 @@ img.ph--contact{object-position:50% 18%;filter:grayscale(1) contrast(1.04)}
   .gallery{grid-template-columns:repeat(3,minmax(0,1fr))}
   .cards{grid-template-columns:repeat(3,minmax(0,1fr))}
   .clients{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .audience{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 
 /* ---- планшети: перший екран стає вертикальним ---- */
@@ -1358,6 +1525,13 @@ img.ph--contact{object-position:50% 18%;filter:grayscale(1) contrast(1.04)}
   .contact{grid-template-columns:minmax(0,1fr)}
   .contact__media{order:-1;max-height:360px;overflow:hidden;border-radius:var(--r)}
   .contact__media .ph{aspect-ratio:auto;min-height:360px}
+
+  .about{grid-template-columns:minmax(0,1fr)}
+  .about__media{max-width:560px}
+  .reels{grid-template-columns:minmax(0,1fr)}
+  .reels__media{order:-1;max-width:560px}
+  .flow__row{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .flow__node--wide{max-width:none}
 }
 
 @media (max-width: 900px){
@@ -1409,6 +1583,13 @@ img.ph--contact{object-position:50% 18%;filter:grayscale(1) contrast(1.04)}
   .tile__cap{font-size:12px;left:12px;bottom:12px;padding-right:30px}
   .tile__arrow{width:20px;height:20px;right:10px;bottom:10px}
   .clients{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .audience{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .aud{padding:10px 10px 18px}
+  .aud h3{font-size:19px;margin-top:14px}
+  .aud p{font-size:12.5px}
+  .aud__ph .ph__label{display:none}
+  .flow__row{grid-template-columns:minmax(0,1fr)}
+  .about__claim{font-size:clamp(24px,6.6vw,32px)}
   .client{padding:22px 14px 20px}
   .client__ava{width:60px;height:60px}
   .ai-plate{grid-template-columns:minmax(0,1fr)}
