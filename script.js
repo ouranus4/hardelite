@@ -14,6 +14,28 @@ const CONTACTS = {
   phone:         '+380 66 170 33 03'
 };
 
+/* ⬇⬇⬇  ЦІНИ ДЛЯ КАЛЬКУЛЯТОРА — впишіть свої (у гривнях, за місяць)  ⬇⬇⬇
+   Цифри нижче — приклад. Поки enabled: false, сума на сайті не показується,
+   щоб не вводити клієнтів в оману. */
+const PRICES = {
+  // поки false — калькулятор показує підбір послуг, але не суму.
+  // Впишіть свої ціни нижче й поставте true — зʼявиться розрахунок.
+  enabled: false,
+
+  what: {
+    smm:     18000,   // ведення Instagram
+    content:  9000,   // контент і зйомки
+    reels:   12000,   // EXPERT REELS DAY
+    ads:      8000,   // Meta Ads (без бюджету)
+    pr:       7000,   // PR та колаборації
+    product: 15000,   // упаковка продукту
+    funnel:  11000,   // автоворонка
+    launch:  25000    // супровід запуску
+  },
+  scale: { start: 0.8, opt: 1, max: 1.35 },   // множник обсягу
+  who:   { expert: 1, blogger: 1, beauty: 0.9, brand: 1.1 }
+};
+
 // Куди веде кнопка «Надіслати заявку»: 'telegram' або 'instagramDM'
 const PRIMARY_CONTACT = 'telegram';
 
@@ -23,6 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initLoader();
   initDeck();
   initScopeTabs();
+  initCalc();
   applyContacts();
   initHeader();
   initBurger();
@@ -188,6 +211,105 @@ function initScopeTabs() {
       });
     });
   });
+}
+
+/* ---------- Калькулятор вартості ---------- */
+
+function initCalc() {
+  const calc = document.querySelector('.calc');
+  if (!calc) return;
+
+  const sumEl = document.getElementById('calcSum');
+  const hintEl = document.getElementById('calcHint');
+  const pickedEl = document.getElementById('calcPicked');
+  const sendBtn = document.getElementById('calcSend');
+
+  const labels = {};
+  calc.querySelectorAll('.calc__chip').forEach(chip => {
+    labels[chip.dataset.group + ':' + chip.dataset.value] =
+      chip.childNodes[0].textContent.trim();
+  });
+
+  const state = { who: null, what: new Set(), scale: null };
+  let shown = 0;
+
+  const money = n => new Intl.NumberFormat('uk-UA').format(Math.round(n / 100) * 100) + ' ₴';
+
+  const animateTo = value => {
+    const from = shown;
+    const startTime = performance.now();
+    const run = now => {
+      const t = Math.min(1, (now - startTime) / 500);
+      shown = from + (value - from) * (1 - Math.pow(1 - t, 3));
+      sumEl.textContent = value ? 'від ' + money(shown) : '—';
+      if (t < 1) requestAnimationFrame(run); else shown = value;
+    };
+    requestAnimationFrame(run);
+  };
+
+  const render = () => {
+    const base = [...state.what].reduce((acc, key) => acc + (PRICES.what[key] || 0), 0);
+    const scale = PRICES.scale[state.scale] || 1;
+    const who = PRICES.who[state.who] || 1;
+    const total = base * scale * who;
+
+    pickedEl.innerHTML = '';
+    [...state.what].forEach(key => {
+      const li = document.createElement('li');
+      li.innerHTML = '<span>' + labels['what:' + key] + '</span>';
+      pickedEl.appendChild(li);
+    });
+
+    if (!state.what.size) {
+      sumEl.textContent = '—';
+      shown = 0;
+      hintEl.textContent = 'Оберіть, що потрібно, — і зберемо ваш набір';
+      return;
+    }
+
+    if (!PRICES.enabled) {
+      sumEl.textContent = 'за запитом';
+      sumEl.style.fontSize = '.62em';
+      hintEl.textContent = 'Порахуємо під ваш обсяг і надішлемо вартість —'
+        + ' зазвичай протягом дня';
+      return;
+    }
+
+    animateTo(total);
+    hintEl.textContent = state.scale
+      ? 'Обсяг: ' + labels['scale:' + state.scale].toLowerCase()
+      : 'Оберіть обсяг, щоб уточнити розрахунок';
+  };
+
+  calc.querySelectorAll('.calc__chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      const { group, value } = chip.dataset;
+
+      if (group === 'what') {
+        chip.classList.toggle('is-on');
+        state.what.has(value) ? state.what.delete(value) : state.what.add(value);
+      } else {
+        const siblings = calc.querySelectorAll('[data-group="' + group + '"]');
+        const already = chip.classList.contains('is-on');
+        siblings.forEach(s => s.classList.remove('is-on'));
+        if (!already) { chip.classList.add('is-on'); state[group] = value; }
+        else { state[group] = null; }
+      }
+      render();
+    });
+  });
+
+  // переносимо вибір у форму заявки
+  sendBtn.addEventListener('click', () => {
+    const service = document.getElementById('fService');
+    if (service && state.what.size) {
+      const first = labels['what:' + [...state.what][0]];
+      [...service.options].forEach(o => { if (o.text === first) service.value = o.value; });
+    }
+    window.__calcSummary = [...state.what].map(k => labels['what:' + k]).join(', ');
+  });
+
+  render();
 }
 
 /* ---------- Контакти ---------- */
@@ -425,6 +547,7 @@ function initForm() {
       'Instagram: @' + insta
     ];
     if (fields.phone.value.trim()) lines.push('Телефон: ' + fields.phone.value.trim());
+    if (window.__calcSummary) lines.push('Цікавить: ' + window.__calcSummary);
 
     const message = lines.join('\n');
     const copied = await copyText(message);
