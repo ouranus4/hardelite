@@ -118,6 +118,9 @@ function initDeck() {
   const prev = document.getElementById('deckPrev');
   const next = document.getElementById('deckNext');
   const start = document.getElementById('deckStart');
+  const close = document.getElementById('deckClose');
+  const now = document.getElementById('deckNow');
+  const nextLabel = document.getElementById('deckNextLabel');
   const slides = [...track.querySelectorAll('[data-slide]')];
 
   let index = 0;
@@ -132,10 +135,14 @@ function initDeck() {
     [...dots.children].forEach((d, i) => d.classList.toggle('is-active', i === index));
     bar.style.width = ((index + 1) / slides.length * 100) + '%';
 
+    if (now) now.textContent = String(index + 1).padStart(2, '0');
+
     prev.disabled = index === 0;
     next.disabled = index === slides.length - 1;
-    next.textContent = index === slides.length - 2 ? 'Останній етап →' : 'Далі →';
-    if (index === slides.length - 1) next.textContent = 'Це фініш';
+    if (nextLabel) {
+      nextLabel.textContent = index === slides.length - 2 ? 'Останній етап'
+        : index === slides.length - 1 ? 'Пройдено' : 'Далі';
+    }
   };
 
   const go = i => { index = Math.max(0, Math.min(slides.length - 1, i)); render(); };
@@ -155,6 +162,15 @@ function initDeck() {
     render();
     stage.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
   });
+
+  if (close) {
+    close.addEventListener('click', () => {
+      opened = false;
+      stage.hidden = true;
+      intro.hidden = false;
+      index = 0;
+    });
+  }
 
   prev.addEventListener('click', () => go(index - 1));
   next.addEventListener('click', () => go(index + 1));
@@ -223,6 +239,7 @@ function initCalc() {
   const hintEl = document.getElementById('calcHint');
   const pickedEl = document.getElementById('calcPicked');
   const sendBtn = document.getElementById('calcSend');
+  const countEl = document.getElementById('calcCount');
 
   const labels = {};
   calc.querySelectorAll('.calc__chip').forEach(chip => {
@@ -253,15 +270,23 @@ function initCalc() {
     const who = PRICES.who[state.who] || 1;
     const total = base * scale * who;
 
+    if (countEl) countEl.textContent = state.what.size;
+
     pickedEl.innerHTML = '';
-    [...state.what].forEach(key => {
+    [...state.what].forEach((key, i) => {
       const li = document.createElement('li');
-      li.innerHTML = '<span>' + labels['what:' + key] + '</span>';
+      li.textContent = labels['what:' + key];
+      li.style.animationDelay = (i * 0.05) + 's';
       pickedEl.appendChild(li);
     });
 
     if (!state.what.size) {
+      const li = document.createElement('li');
+      li.className = 'calc__empty';
+      li.textContent = 'Поки нічого не обрано';
+      pickedEl.appendChild(li);
       sumEl.textContent = '—';
+      sumEl.style.fontSize = '';
       shown = 0;
       hintEl.textContent = 'Оберіть, що потрібно, — і зберемо ваш набір';
       return;
@@ -269,7 +294,7 @@ function initCalc() {
 
     if (!PRICES.enabled) {
       sumEl.textContent = 'за запитом';
-      sumEl.style.fontSize = '.62em';
+      sumEl.style.fontSize = '.55em';
       hintEl.textContent = 'Порахуємо під ваш обсяг і надішлемо вартість —'
         + ' зазвичай протягом дня';
       return;

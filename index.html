@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Unbounded:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=8">
+<link rel="stylesheet" href="styles.css?v=10">
 <script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
@@ -367,7 +367,11 @@
       </div>
 
       <div class="deck__stage" id="deckStage" hidden>
-        <div class="deck__bar" aria-hidden="true"><i id="deckBar"></i></div>
+        <div class="deck__top">
+          <span class="deck__label">Ваш шлях</span>
+          <div class="deck__bar" aria-hidden="true"><i id="deckBar"></i></div>
+          <button class="deck__close" type="button" id="deckClose">Згорнути</button>
+        </div>
 
         <div class="deck__viewport">
           <div class="deck__track" id="deckTrack">
@@ -466,9 +470,19 @@
         </div>
 
         <div class="deck__nav">
-          <button class="deck__arrow" type="button" id="deckPrev" aria-label="Попередній етап">←</button>
-          <div class="deck__dots" id="deckDots"></div>
-          <button class="deck__arrow deck__arrow--next" type="button" id="deckNext">Далі →</button>
+          <button class="deck__arrow" type="button" id="deckPrev" aria-label="Попередній етап">
+            <span aria-hidden="true">←</span>
+          </button>
+
+          <div class="deck__center">
+            <span class="deck__counter"><b id="deckNow">01</b> / 07</span>
+            <div class="deck__dots" id="deckDots"></div>
+          </div>
+
+          <button class="deck__arrow deck__arrow--next" type="button" id="deckNext">
+            <span id="deckNextLabel">Далі</span>
+            <span class="btn__arrow" aria-hidden="true">→</span>
+          </button>
         </div>
       </div>
     </div>
@@ -567,9 +581,9 @@
     <div class="reels__copy">
       <p class="eyebrow">Окремий продукт</p>
       <h2 class="h2">EXPERT<br><em>REELS DAY</em></h2>
-      <p class="reels__claim">Один день зйомки — контент на місяць</p>
+      <p class="reels__claim">Один день зйомки — <em>контент на місяць</em></p>
 
-      <p class="reels__sub">Що входить:</p>
+      <p class="reels__sub">Що входить</p>
       <ul class="reels__list">
         <li>Сценарії під вашу нішу</li>
         <li>Підбір локацій</li>
@@ -593,10 +607,10 @@
 <section class="section section--vs" id="vs">
   <div class="container">
     <header class="section__head">
-      <h2 class="h2 h2--center">AI чи <em>агенція</em></h2>
+      <h2 class="h2 h2--center">Три шляхи, <em>один результат</em></h2>
       <p class="section__note section__note--center">
-        Ми користуємось AI щодня — він економить нам години. Але є речі,
-        яких він не зробить за вас.
+        Можна зробити самому з AI, можна зібрати фрилансерів, а можна віддати
+        проєкт команді. Ось чим ці шляхи відрізняються.
       </p>
     </header>
 
@@ -607,21 +621,34 @@
           <h3>Швидко, дешево<br>і як у всіх</h3>
         </header>
         <ul>
-          <li><span class="vs__mark">✕</span>Напише текст — такий самий, як усім у вашій ніші</li>
+          <li><span class="vs__mark">✕</span>Напише текст — такий самий, як усім у ніші</li>
           <li><span class="vs__mark">✕</span>Не зніме вас і ваш продукт</li>
           <li><span class="vs__mark">✕</span>Не відчує, який тренд зайде саме зараз</li>
-          <li><span class="vs__mark">✕</span>Не домовиться з блогером і не приведе на захід</li>
+          <li><span class="vs__mark">✕</span>Не домовиться з блогером</li>
           <li><span class="vs__mark">✕</span>Порадить рекламу в теорії, але не запустить</li>
           <li><span class="vs__mark">✕</span>Ні з кого спитати за результат</li>
         </ul>
       </article>
 
-      <span class="vs__or" aria-hidden="true">або</span>
+      <article class="vs__card vs__card--free" data-anim>
+        <header>
+          <span class="vs__badge">Окремі підрядники</span>
+          <h3>Кожен сам<br>за себе</h3>
+        </header>
+        <ul>
+          <li><span class="vs__mark">✕</span>Кожен відповідає лише за свій шматок</li>
+          <li><span class="vs__mark">✕</span>Дизайнер не знає, що зняв монтажер</li>
+          <li><span class="vs__mark">✕</span>Ви самі зводите всіх і тримаєте дедлайни</li>
+          <li><span class="vs__mark">✕</span>Стратегії немає — є набір послуг</li>
+          <li><span class="vs__mark">✕</span>Хтось зник у відпустку — процес став</li>
+          <li><span class="vs__mark">✕</span>За спільний результат не відповідає ніхто</li>
+        </ul>
+      </article>
 
       <article class="vs__card vs__card--we" data-anim>
         <header>
           <span class="vs__badge">HardElite</span>
-          <h3>Команда, яка<br>доводить до результату</h3>
+          <h3>Одна команда<br>до результату</h3>
         </header>
         <ul>
           <li><span class="vs__mark">✓</span>Пишемо під вашу аудиторію і вашим голосом</li>
@@ -629,7 +656,7 @@
           <li><span class="vs__mark">✓</span>Щодня в стрічці — ловимо тренд, поки він живий</li>
           <li><span class="vs__mark">✓</span>Живі контакти: блогери, медіа, заходи</li>
           <li><span class="vs__mark">✓</span>Запускаємо рекламу і показуємо цифри</li>
-          <li><span class="vs__mark">✓</span>Є команда, дедлайни й відповідальність</li>
+          <li><span class="vs__mark">✓</span>Одна команда, дедлайни й відповідальність</li>
         </ul>
       </article>
     </div>
@@ -767,7 +794,7 @@
         </div>
 
         <div class="calc__step">
-          <p class="calc__label"><span>02</span> Що потрібно</p>
+          <p class="calc__label"><span>02</span> Що потрібно <b class="calc__count" id="calcCount">0</b></p>
           <div class="calc__chips" data-multi="what">
           <button class="calc__chip" type="button" data-group="what" data-value="smm">Ведення Instagram</button>
           <button class="calc__chip" type="button" data-group="what" data-value="content">Контент і зйомки</button>
@@ -790,13 +817,24 @@
         </div>
       </div>
 
-      <aside class="calc__result">
-        <p class="calc__result-label">Ваш набір послуг</p>
-        <p class="calc__sum"><span id="calcSum">—</span></p>
-        <p class="calc__hint" id="calcHint">Оберіть варіанти зліва, щоб побачити розрахунок</p>
-        <ul class="calc__picked" id="calcPicked"></ul>
-        <a href="#contact" class="btn btn--cta btn--wide" id="calcSend">Отримати точний прорахунок</a>
-        <p class="calc__disclaimer">Це орієнтир, а не рахунок. Фінальна вартість залежить від обсягу зйомок і задач.</p>
+      <aside class="calc__result" id="calcResult">
+        <div class="calc__tape" aria-hidden="true"></div>
+
+        <p class="calc__result-label">Ваш набір</p>
+
+        <ul class="calc__picked" id="calcPicked">
+          <li class="calc__empty">Поки нічого не обрано</li>
+        </ul>
+
+        <div class="calc__total">
+          <span class="calc__total-label">Разом</span>
+          <span class="calc__sum" id="calcSum">—</span>
+        </div>
+
+        <p class="calc__hint" id="calcHint">Оберіть, що потрібно, — і зберемо ваш набір</p>
+
+        <a href="#contact" class="btn btn--cta btn--wide" id="calcSend">Отримати прорахунок <span class="btn__arrow" aria-hidden="true">→</span></a>
+        <p class="calc__disclaimer">Фінальна вартість залежить від обсягу зйомок і задач. Назвемо її після короткого брифу.</p>
       </aside>
     </div>
   </div>
@@ -912,6 +950,6 @@
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-<script src="script.js?v=8"></script>
+<script src="script.js?v=10"></script>
 </body>
 </html>
