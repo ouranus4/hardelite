@@ -20,6 +20,8 @@ const PRIMARY_CONTACT = 'telegram';
 /* ========================================================= */
 
 document.addEventListener('DOMContentLoaded', () => {
+  initLoader();
+  initStepper();
   applyContacts();
   initHeader();
   initBurger();
@@ -31,6 +33,92 @@ document.addEventListener('DOMContentLoaded', () => {
   const year = document.getElementById('year');
   if (year) year.textContent = new Date().getFullYear();
 });
+
+/* ---------- Екран завантаження ---------- */
+
+function initLoader() {
+  const loader = document.getElementById('loader');
+  const fill = document.getElementById('loaderFill');
+  const pct = document.getElementById('loaderPct');
+  if (!loader) return;
+
+  const finish = () => {
+    document.body.classList.add('is-loaded');
+    setTimeout(() => loader.remove(), 700);
+  };
+
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    finish();
+    return;
+  }
+
+  let value = 0;
+  let ready = false;
+  const start = performance.now();
+  window.addEventListener('load', () => { ready = true; });
+
+  const tick = () => {
+    const elapsed = performance.now() - start;
+    // рівно біжимо до 92%, а фінішуємо коли сторінка готова або через 1,5 с
+    const target = (ready || elapsed > 1500) ? 100 : Math.min(92, elapsed / 1300 * 92);
+    value = value + (target - value) * 0.22;
+
+    if (fill) fill.style.width = value.toFixed(1) + '%';
+    if (pct) pct.textContent = Math.round(value) + '%';
+
+    if (value >= 99.3) {
+      if (fill) fill.style.width = '100%';
+      if (pct) pct.textContent = '100%';
+      setTimeout(finish, 200);
+      return;
+    }
+    setTimeout(tick, 32);
+  };
+
+  tick();
+  // запобіжник: якщо щось піде не так, екран усе одно зникне
+  setTimeout(finish, 3000);
+}
+
+/* ---------- Інтерактивна система ---------- */
+
+function initStepper() {
+  const stepper = document.getElementById('stepper');
+  if (!stepper) return;
+
+  const fill = document.getElementById('stepperFill');
+  const steps = [...stepper.querySelectorAll('[data-step]')];
+
+  const paintRail = () => {
+    if (!fill) return;
+    const open = stepper.querySelector('.step.is-open');
+    if (!open) { fill.style.height = '0px'; return; }
+    const rail = stepper.querySelector('.stepper__rail').getBoundingClientRect();
+    const dot = open.querySelector('.step__dot').getBoundingClientRect();
+    fill.style.height = Math.max(0, dot.top + dot.height / 2 - rail.top) + 'px';
+  };
+
+  steps.forEach(step => {
+    const head = step.querySelector('.step__head');
+    head.addEventListener('click', () => {
+      const wasOpen = step.classList.contains('is-open');
+      steps.forEach(other => {
+        other.classList.remove('is-open');
+        other.querySelector('.step__head').setAttribute('aria-expanded', 'false');
+      });
+      if (!wasOpen) {
+        step.classList.add('is-open');
+        head.setAttribute('aria-expanded', 'true');
+      }
+      requestAnimationFrame(paintRail);
+      setTimeout(paintRail, 460);
+    });
+  });
+
+  window.addEventListener('resize', paintRail);
+  requestAnimationFrame(paintRail);
+  setTimeout(paintRail, 400);
+}
 
 /* ---------- Контакти ---------- */
 
