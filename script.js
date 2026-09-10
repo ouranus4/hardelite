@@ -21,7 +21,8 @@ const PRIMARY_CONTACT = 'telegram';
 
 document.addEventListener('DOMContentLoaded', () => {
   initLoader();
-  initStepper();
+  initDeck();
+  initScopeTabs();
   applyContacts();
   initHeader();
   initBurger();
@@ -80,44 +81,113 @@ function initLoader() {
   setTimeout(finish, 3000);
 }
 
-/* ---------- Інтерактивна система ---------- */
+/* ---------- Інтерактивні слайди системи ---------- */
 
-function initStepper() {
-  const stepper = document.getElementById('stepper');
-  if (!stepper) return;
+function initDeck() {
+  const deck = document.getElementById('deck');
+  if (!deck) return;
 
-  const fill = document.getElementById('stepperFill');
-  const steps = [...stepper.querySelectorAll('[data-step]')];
+  const intro = document.getElementById('deckIntro');
+  const stage = document.getElementById('deckStage');
+  const track = document.getElementById('deckTrack');
+  const bar = document.getElementById('deckBar');
+  const dots = document.getElementById('deckDots');
+  const prev = document.getElementById('deckPrev');
+  const next = document.getElementById('deckNext');
+  const start = document.getElementById('deckStart');
+  const slides = [...track.querySelectorAll('[data-slide]')];
 
-  const paintRail = () => {
-    if (!fill) return;
-    const open = stepper.querySelector('.step.is-open');
-    if (!open) { fill.style.height = '0px'; return; }
-    const rail = stepper.querySelector('.stepper__rail').getBoundingClientRect();
-    const dot = open.querySelector('.step__dot').getBoundingClientRect();
-    fill.style.height = Math.max(0, dot.top + dot.height / 2 - rail.top) + 'px';
+  let index = 0;
+  let opened = false;
+
+  const render = () => {
+    track.style.transform = 'translateX(' + (-index * 100) + '%)';
+    slides.forEach((s, i) => {
+      s.classList.toggle('is-active', i === index);
+      s.setAttribute('aria-hidden', i === index ? 'false' : 'true');
+    });
+    [...dots.children].forEach((d, i) => d.classList.toggle('is-active', i === index));
+    bar.style.width = ((index + 1) / slides.length * 100) + '%';
+
+    prev.disabled = index === 0;
+    next.disabled = index === slides.length - 1;
+    next.textContent = index === slides.length - 2 ? 'Останній етап →' : 'Далі →';
+    if (index === slides.length - 1) next.textContent = 'Це фініш';
   };
 
-  steps.forEach(step => {
-    const head = step.querySelector('.step__head');
-    head.addEventListener('click', () => {
-      const wasOpen = step.classList.contains('is-open');
-      steps.forEach(other => {
-        other.classList.remove('is-open');
-        other.querySelector('.step__head').setAttribute('aria-expanded', 'false');
-      });
-      if (!wasOpen) {
-        step.classList.add('is-open');
-        head.setAttribute('aria-expanded', 'true');
-      }
-      requestAnimationFrame(paintRail);
-      setTimeout(paintRail, 460);
-    });
+  const go = i => { index = Math.max(0, Math.min(slides.length - 1, i)); render(); };
+
+  slides.forEach((_, i) => {
+    const dot = document.createElement('button');
+    dot.type = 'button';
+    dot.setAttribute('aria-label', 'Етап ' + (i + 1));
+    dot.addEventListener('click', () => go(i));
+    dots.appendChild(dot);
   });
 
-  window.addEventListener('resize', paintRail);
-  requestAnimationFrame(paintRail);
-  setTimeout(paintRail, 400);
+  start.addEventListener('click', () => {
+    opened = true;
+    intro.hidden = true;
+    stage.hidden = false;
+    render();
+    stage.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+  });
+
+  prev.addEventListener('click', () => go(index - 1));
+  next.addEventListener('click', () => go(index + 1));
+
+  // стрілки клавіатури працюють, коли блок на екрані
+  window.addEventListener('keydown', e => {
+    if (!opened) return;
+    const box = stage.getBoundingClientRect();
+    if (box.bottom < 0 || box.top > window.innerHeight) return;
+    if (e.key === 'ArrowRight') go(index + 1);
+    if (e.key === 'ArrowLeft') go(index - 1);
+  });
+
+  // свайп
+  let startX = null;
+  track.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive: true });
+  track.addEventListener('touchend', e => {
+    if (startX === null) return;
+    const dx = e.changedTouches[0].clientX - startX;
+    if (Math.abs(dx) > 45) go(index + (dx < 0 ? 1 : -1));
+    startX = null;
+  });
+
+  render();
+}
+
+/* ---------- Вкладки у блоці послуг ---------- */
+
+function initScopeTabs() {
+  const tabs = [...document.querySelectorAll('.scope__tab')];
+  const panels = [...document.querySelectorAll('.scope__panel')];
+  if (!tabs.length) return;
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const i = +tab.dataset.tab;
+
+      tabs.forEach((t, n) => {
+        t.classList.toggle('is-active', n === i);
+        t.setAttribute('aria-selected', n === i ? 'true' : 'false');
+      });
+
+      panels.forEach((panel, n) => {
+        if (n === i) {
+          panel.hidden = false;
+          // перезапускаємо анімацію появи пунктів
+          panel.classList.remove('is-active');
+          void panel.offsetWidth;
+          panel.classList.add('is-active');
+        } else {
+          panel.hidden = true;
+          panel.classList.remove('is-active');
+        }
+      });
+    });
+  });
 }
 
 /* ---------- Контакти ---------- */
