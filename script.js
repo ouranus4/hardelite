@@ -32,8 +32,7 @@ const PRICES = {
     funnel:  11000,   // автоворонка
     launch:  25000    // супровід запуску
   },
-  scale: { start: 0.8, opt: 1, max: 1.35 },   // множник обсягу
-  who:   { expert: 1, blogger: 1, beauty: 0.9, brand: 1.1 }
+  who:   { expert: 1, blogger: 1, beauty: 0.9, brand: 1.1 }   // поправка на тип проєкту
 };
 
 // Куди веде кнопка «Надіслати заявку»: 'telegram' або 'instagramDM'
@@ -247,7 +246,7 @@ function initCalc() {
       chip.childNodes[0].textContent.trim();
   });
 
-  const state = { who: null, what: new Set(), scale: null };
+  const state = { who: null, what: new Set() };
   let shown = 0;
 
   const money = n => new Intl.NumberFormat('uk-UA').format(Math.round(n / 100) * 100) + ' ₴';
@@ -266,9 +265,8 @@ function initCalc() {
 
   const render = () => {
     const base = [...state.what].reduce((acc, key) => acc + (PRICES.what[key] || 0), 0);
-    const scale = PRICES.scale[state.scale] || 1;
     const who = PRICES.who[state.who] || 1;
-    const total = base * scale * who;
+    const total = base * who;
 
     if (countEl) countEl.textContent = state.what.size;
 
@@ -301,9 +299,9 @@ function initCalc() {
     }
 
     animateTo(total);
-    hintEl.textContent = state.scale
-      ? 'Обсяг: ' + labels['scale:' + state.scale].toLowerCase()
-      : 'Оберіть обсяг, щоб уточнити розрахунок';
+    hintEl.textContent = state.who
+      ? 'Розрахунок для профілю: ' + labels['who:' + state.who].toLowerCase()
+      : 'Оберіть, хто ви, — і розрахунок уточниться';
   };
 
   calc.querySelectorAll('.calc__chip').forEach(chip => {
