@@ -203,6 +203,11 @@ function initScopeTabs() {
   const panels = [...document.querySelectorAll('.scope__panel')];
   if (!tabs.length) return;
 
+  // черга появи пунктів рахується від їх порядку, тож список може бути будь-якої довжини
+  panels.forEach(panel => {
+    [...panel.querySelectorAll('li')].forEach((li, i) => li.style.setProperty('--i', i));
+  });
+
   tabs.forEach(tab => {
     tab.addEventListener('click', () => {
       const i = +tab.dataset.tab;

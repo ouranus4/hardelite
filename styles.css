@@ -201,8 +201,8 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   white-space:nowrap;
   transition:transform .25s cubic-bezier(.2,.8,.3,1), background .25s, color .25s, border-color .25s;
 }
-.btn--dark{background:var(--ink);color:var(--paper)}
-.btn--dark:hover{transform:translateY(-2px);background:#1d1d1f}
+.btn--dark{background-color:var(--ink);color:var(--paper)}
+.btn--dark:hover{transform:translateY(-2px);background-color:#1d1d1f}
 .btn--ghost{border:1px solid var(--line);color:var(--ink)}
 .btn--ghost:hover{border-color:var(--ink);transform:translateY(-2px)}
 .btn--sm{padding:12px 22px;font-size:13px}
@@ -220,6 +220,19 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   transition:transform .3s cubic-bezier(.2,.8,.3,1);
 }
 .btn--cta:hover .btn__arrow{transform:translateX(5px)}
+/* м'який відблиск, що пробігає по кнопці */
+.btn--shine{
+  background-image:linear-gradient(100deg,
+    transparent 22%, rgba(255,255,255,.22) 42%, transparent 62%);
+  background-size:240% 100%;
+  background-repeat:no-repeat;
+  animation:btnShine 3.8s ease-in-out infinite;
+}
+@keyframes btnShine{
+  0%{background-position:190% 0}
+  55%{background-position:-90% 0}
+  100%{background-position:-90% 0}
+}
 .btn--cta::after{
   content:"";
   position:absolute;
@@ -1280,6 +1293,16 @@ img.ph--contact{object-position:50% 18%;filter:grayscale(1) contrast(1.04)}
   padding:clamp(26px,3.4vw,44px);
   min-height:340px;
 }
+.scope__panel-title{
+  font-family:var(--serif);
+  font-size:clamp(19px,2.1vw,25px);
+  font-weight:500;
+  letter-spacing:-.01em;
+  line-height:1.2;
+  padding-bottom:18px;
+  margin-bottom:20px;
+  border-bottom:1px solid var(--line);
+}
 .scope__panel[hidden]{display:none}
 .scope__panel ul{
   display:grid;
@@ -1289,18 +1312,11 @@ img.ph--contact{object-position:50% 18%;filter:grayscale(1) contrast(1.04)}
 .scope__panel li{
   position:relative;
   padding-left:26px;
-  font-size:15px;
+  font-size:14.5px;
   line-height:1.5;
   color:var(--ink-80);
 }
-.scope__panel.is-active li{animation:scopeItem .5s cubic-bezier(.2,.8,.3,1) backwards}
-.scope__panel.is-active li:nth-child(1){animation-delay:.04s}
-.scope__panel.is-active li:nth-child(2){animation-delay:.09s}
-.scope__panel.is-active li:nth-child(3){animation-delay:.14s}
-.scope__panel.is-active li:nth-child(4){animation-delay:.19s}
-.scope__panel.is-active li:nth-child(5){animation-delay:.24s}
-.scope__panel.is-active li:nth-child(6){animation-delay:.29s}
-.scope__panel.is-active li:nth-child(7){animation-delay:.34s}
+.scope__panel.is-active li{animation:scopeItem .5s cubic-bezier(.2,.8,.3,1) backwards;animation-delay:calc(var(--i, 0) * .035s)}
 @keyframes scopeItem{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 .scope__panel li::before{
   content:"";
