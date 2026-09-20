@@ -808,7 +808,114 @@ img.ph--contact{object-position:50% 18%;filter:grayscale(1) contrast(1.04)}
   gap:clamp(28px,5vw,72px);
   align-items:center;
 }
-.ph--about{aspect-ratio:4/3}
+/* інфографіка повного циклу */
+.cycle{
+  --r: clamp(108px, 15vw, 158px);
+  --n: clamp(76px, 10.5vw, 100px);
+  position:relative;
+  width:100%;
+  max-width:calc(var(--r) * 2 + var(--n) + 16px);
+  aspect-ratio:1;
+  margin-inline:auto;
+}
+.cycle__ring{
+  position:absolute;
+  left:50%;top:50%;
+  width:calc(var(--r) * 2);
+  height:calc(var(--r) * 2);
+  margin:calc(var(--r) * -1) 0 0 calc(var(--r) * -1);
+  border:1px dashed var(--line);
+  border-radius:50%;
+  /* тонкі промені від центру до кожного вузла */
+  background:repeating-conic-gradient(from -90deg,
+    rgba(11,11,12,.14) 0 .35deg, transparent .35deg 60deg);
+}
+.cycle__ring::after{
+  content:"";
+  position:absolute;
+  inset:-1px;
+  border-radius:50%;
+  border:1.5px solid transparent;
+  border-top-color:var(--ink);
+  animation:cycleSpin 9s linear infinite;
+}
+@keyframes cycleSpin{to{transform:rotate(360deg)}}
+
+.cycle__center{
+  position:absolute;
+  left:50%;top:50%;
+  transform:translate(-50%,-50%);
+  width:calc(var(--n) * 1.12);
+  height:calc(var(--n) * 1.12);
+  border-radius:50%;
+  background:var(--paper);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:2px;
+  text-align:center;
+}
+.cycle__center b{
+  font-family:var(--serif);
+  font-size:clamp(22px,2.6vw,30px);
+  font-weight:500;
+  letter-spacing:-.02em;
+  line-height:1;
+}
+.cycle__center i{
+  font-family:var(--brand);
+  font-style:normal;
+  font-size:9px;
+  letter-spacing:.24em;
+  text-transform:uppercase;
+  color:var(--muted);
+}
+
+.cycle__node{
+  position:absolute;
+  left:50%;top:50%;
+  width:var(--n);
+  height:var(--n);
+  margin:calc(var(--n) / -2) 0 0 calc(var(--n) / -2);
+  border-radius:50%;
+  background:var(--card);
+  border:1px solid var(--line);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:3px;
+  font-size:clamp(11.5px,1.2vw,13.5px);
+  line-height:1.15;
+  text-align:center;
+  transform:
+    rotate(calc(var(--a) * 60deg))
+    translateY(calc(var(--r) * -1))
+    rotate(calc(var(--a) * -60deg));
+  transition:background .3s, border-color .3s, box-shadow .3s;
+  animation:cycleNode .5s cubic-bezier(.2,.8,.3,1) backwards;
+  animation-delay:calc(var(--a) * .09s);
+}
+@keyframes cycleNode{from{opacity:0;transform:
+    rotate(calc(var(--a) * 60deg))
+    translateY(calc(var(--r) * -.72))
+    rotate(calc(var(--a) * -60deg)) scale(.8)}}
+.cycle__node:hover{
+  background:var(--ink);
+  color:var(--paper);
+  border-color:var(--ink);
+  box-shadow:var(--shadow);
+}
+.cycle__node i{
+  font-family:var(--brand);
+  font-style:normal;
+  font-size:8px;
+  letter-spacing:.16em;
+  color:var(--muted);
+}
+.cycle__node:hover i{color:rgba(245,243,240,.7)}
+
 .about__claim{
   margin-top:6px;
   font-family:var(--serif);
@@ -2118,7 +2225,7 @@ img.ph--contact{object-position:50% 18%;filter:grayscale(1) contrast(1.04)}
   .contact__media .ph{aspect-ratio:auto;min-height:360px}
 
   .about{grid-template-columns:minmax(0,1fr)}
-  .about__media{max-width:560px}
+  .about__media{max-width:420px;width:100%;justify-self:center}
   .reels{grid-template-columns:minmax(0,1fr)}
   .reels__media{order:-1;max-width:none}
   .reels__copy{order:1}

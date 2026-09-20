@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Unbounded:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=13">
+<link rel="stylesheet" href="styles.css?v=15">
 <script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
@@ -155,8 +155,18 @@
 <section class="section section--about" id="about">
   <div class="container about">
     <div class="about__media">
-      <div class="ph ph--about" data-ph="Команда за роботою · горизонталь 4:3">
-        <span class="ph__label">фото</span>
+      <div class="cycle" role="img" aria-label="Повний цикл робіт усередині однієї команди: упаковка, зйомки, контент, таргет, PR, запуски">
+        <span class="cycle__ring" aria-hidden="true"></span>
+        <span class="cycle__center" aria-hidden="true">
+          <b>Одна</b>
+          <i>команда</i>
+        </span>
+        <span class="cycle__node" style="--a:0"><i>01</i>Упаковка</span>
+        <span class="cycle__node" style="--a:1"><i>02</i>Зйомки</span>
+        <span class="cycle__node" style="--a:2"><i>03</i>Контент</span>
+        <span class="cycle__node" style="--a:3"><i>04</i>Таргет</span>
+        <span class="cycle__node" style="--a:4"><i>05</i>PR</span>
+        <span class="cycle__node" style="--a:5"><i>06</i>Запуски</span>
       </div>
     </div>
 
