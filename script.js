@@ -44,6 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initLoader();
   initDeck();
   initScopeTabs();
+  initTeam();
   initCalc();
   applyContacts();
   initHeader();
@@ -229,6 +230,18 @@ function initScopeTabs() {
           panel.classList.remove('is-active');
         }
       });
+    });
+  });
+}
+
+/* ---------- Ролі команди ---------- */
+
+function initTeam() {
+  document.querySelectorAll('[data-team]').forEach(item => {
+    const head = item.querySelector('.team__head');
+    head.addEventListener('click', () => {
+      const open = item.classList.toggle('is-open');
+      head.setAttribute('aria-expanded', open ? 'true' : 'false');
     });
   });
 }
