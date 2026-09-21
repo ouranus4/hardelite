@@ -38,6 +38,11 @@ const PRICES = {
 // Куди веде кнопка «Надіслати заявку»: 'telegram' або 'instagramDM'
 const PRIMARY_CONTACT = 'telegram';
 
+/* Куди сайт надсилає заявки. '/api/lead' — власний Telegram-бот.
+   Якщо лишити порожнім, форма працюватиме по-старому:
+   скопіює текст заявки і відкриє месенджер. */
+const LEAD_ENDPOINT = '/api/lead';
+
 /* ========================================================= */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -591,6 +596,21 @@ function initForm() {
     if (window.__calcSummary) lines.push('Цікавить: ' + window.__calcSummary);
 
     const message = lines.join('\n');
+    const btn = form.querySelector('button[type="submit"]');
+    const sent = LEAD_ENDPOINT ? await sendLead(form, fields, insta, btn) : false;
+
+    const done = () => {
+      form.reset();
+      form.querySelectorAll('.field').forEach(f => f.classList.remove('is-error'));
+    };
+
+    if (sent) {
+      showToast('Дякуємо! Заявка вже в нас — відповімо найближчим часом');
+      done();
+      return;
+    }
+
+    // запасний шлях: якщо бот недоступний, копіюємо заявку й відкриваємо месенджер
     const copied = await copyText(message);
 
     const target = CONTACTS[PRIMARY_CONTACT] || CONTACTS.telegram || CONTACTS.instagramDM;
@@ -601,13 +621,46 @@ function initForm() {
       : 'Відкриваємо ' + where + ' — напишіть нам про свій проєкт');
 
     setTimeout(() => window.open(target, '_blank', 'noopener'), 700);
-    form.reset();
-    form.querySelectorAll('.field').forEach(f => f.classList.remove('is-error'));
+    done();
   });
 
   form.querySelectorAll('input, select').forEach(el => {
     el.addEventListener('input', () => el.closest('.field').classList.remove('is-error'));
   });
+}
+
+async function sendLead(form, fields, insta, btn) {
+  const label = btn ? btn.innerHTML : '';
+  if (btn) {
+    btn.disabled = true;
+    btn.textContent = 'Надсилаємо…';
+  }
+
+  try {
+    const trap = form.querySelector('[name="company"]');
+    const res = await fetch(LEAD_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name: fields.name.value.trim(),
+        service: fields.service.value,
+        instagram: insta,
+        phone: fields.phone.value.trim(),
+        calc: window.__calcSummary || '',
+        company: trap ? trap.value : ''
+      })
+    });
+
+    const data = await res.json().catch(() => ({}));
+    return res.ok && data.ok === true;
+  } catch (_) {
+    return false;
+  } finally {
+    if (btn) {
+      btn.disabled = false;
+      btn.innerHTML = label;
+    }
+  }
 }
 
 async function copyText(text) {

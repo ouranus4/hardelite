@@ -2181,6 +2181,9 @@ img.ph--contact{object-position:50% 18%;filter:grayscale(1) contrast(1.04)}
   color:rgba(245,243,240,.42);
 }
 
+/* пастка для спам-ботів — людина її не бачить */
+.form__trap{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;opacity:0;pointer-events:none}
+
 /* =========================================================
    TOAST
    ========================================================= */
