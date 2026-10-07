@@ -1112,8 +1112,18 @@ img.ph--contact{object-position:50% 18%;filter:grayscale(1) contrast(1.04)}
   transition:transform .35s cubic-bezier(.2,.8,.3,1), box-shadow .35s;
 }
 .aud:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
-/* кадри горизонтальні 3:2 — показуємо їх цілком, не ріжемо у вертикаль */
-.aud__ph{aspect-ratio:3/2;height:auto;border-radius:calc(var(--r) - 8px)}
+/* кадри горизонтальні 3:2 — показуємо їх цілком, не ріжемо у вертикаль.
+   Селектор саме img.aud__ph: правило img.ph вище задає height:100%,
+   і за специфічністю воно перебило б просто .aud__ph — Safari через це
+   розтягував фото на весь екран, а текст наїжджав зверху. */
+img.aud__ph{
+  width:100%;
+  max-width:100%;
+  height:auto;
+  aspect-ratio:3/2;
+  object-fit:cover;
+  border-radius:calc(var(--r) - 8px);
+}
 .aud__body{padding:0 4px 6px;display:flex;flex-direction:column}
 .aud h3{
   font-family:var(--serif);
