@@ -1672,7 +1672,10 @@ img.aud__ph{
   background-position:center;
 }
 .reels .btn{margin-top:30px}
-.ph--reels{aspect-ratio:4/3}
+.ph--reels{aspect-ratio:3/2}
+/* той самий випадок, що й з img.aud__ph: перебиваємо img.ph{height:100%},
+   інакше Safari розтягує фото поза блок */
+img.ph--reels{width:100%;max-width:100%;height:auto;aspect-ratio:3/2;object-fit:cover}
 
 /* =========================================================
    VIDEO REVIEWS
