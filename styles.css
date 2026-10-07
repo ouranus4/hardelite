@@ -1106,14 +1106,15 @@ img.ph--contact{object-position:50% 18%;filter:grayscale(1) contrast(1.04)}
   border-radius:var(--r);
   padding:16px;
   display:grid;
-  grid-template-columns:minmax(0,.62fr) minmax(0,1fr);
-  gap:18px;
+  grid-template-columns:minmax(0,1fr);
+  gap:16px;
   align-items:start;
   transition:transform .35s cubic-bezier(.2,.8,.3,1), box-shadow .35s;
 }
 .aud:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
-.aud__ph{aspect-ratio:3/4;border-radius:calc(var(--r) - 8px)}
-.aud__body{padding:6px 6px 6px 0;display:flex;flex-direction:column}
+/* кадри горизонтальні 3:2 — показуємо їх цілком, не ріжемо у вертикаль */
+.aud__ph{aspect-ratio:3/2;height:auto;border-radius:calc(var(--r) - 8px)}
+.aud__body{padding:0 4px 6px;display:flex;flex-direction:column}
 .aud h3{
   font-family:var(--serif);
   font-size:24px;
@@ -1684,8 +1685,24 @@ img.ph--contact{object-position:50% 18%;filter:grayscale(1) contrast(1.04)}
 }
 .vrev__play:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
 .vrev__ph{aspect-ratio:9/16;display:flex;border-radius:0}
+/* два відгуки — тримаємо по центру, щоб не розтягувались на всю ширину */
+.videos--two{grid-template-columns:repeat(2,minmax(0,340px));justify-content:center}
+.vrev__video{
+  display:block;
+  width:100%;
+  height:auto;          /* інакше атрибут height="1280" перебиває пропорції */
+  aspect-ratio:9/16;
+  object-fit:cover;
+  background:var(--ink);
+}
+.vrev__play{cursor:pointer}
+.vrev__play.is-playing{transform:none}
+.vrev__play.is-playing:hover{transform:none;box-shadow:none}
+.vrev__play.is-playing .vrev__btn{opacity:0;pointer-events:none}
 .vrev__btn{
   position:absolute;
+  border:0;padding:0;cursor:pointer;
+  opacity:1;transition:opacity .25s, transform .35s cubic-bezier(.2,.8,.3,1);
   left:50%;top:50%;
   transform:translate(-50%,-50%);
   width:60px;height:60px;
@@ -2318,6 +2335,7 @@ img.ph--contact{object-position:50% 18%;filter:grayscale(1) contrast(1.04)}
   .team{grid-template-columns:repeat(2,minmax(0,1fr))}
   .vs{grid-template-columns:minmax(0,1fr)}
   .videos{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .videos--two{grid-template-columns:repeat(2,minmax(0,1fr));justify-content:stretch}
   .calc{grid-template-columns:minmax(0,1fr)}
   .calc__result{position:static}
   .calc__picked{min-height:0}
@@ -2372,9 +2390,8 @@ img.ph--contact{object-position:50% 18%;filter:grayscale(1) contrast(1.04)}
 
   /* ---- решта ---- */
   .audience{gap:12px}
-  .aud{grid-template-columns:minmax(0,1fr);padding:12px}
-  .aud__ph{aspect-ratio:4/3}
-  .aud__body{padding:4px 6px 10px}
+  .aud{padding:12px}
+  .aud__body{padding:0 2px 6px}
   .team{grid-template-columns:minmax(0,1fr)}
   .videos{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
   .vrev__btn{width:46px;height:46px}

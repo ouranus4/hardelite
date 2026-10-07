@@ -56,6 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initBurger();
   initScrollAnim();
   initRevealText();
+  initVideos();
   initSlider();
   initForm();
 
@@ -683,6 +684,42 @@ async function copyText(text) {
   } catch (_) {
     return false;
   }
+}
+
+/* ---------- Відеовідгуки ---------- */
+
+function initVideos() {
+  const boxes = [...document.querySelectorAll('[data-video]')];
+  if (!boxes.length) return;
+
+  const players = boxes.map(box => ({
+    box,
+    video: box.querySelector('video'),
+    btn: box.querySelector('.vrev__btn')
+  })).filter(p => p.video && p.btn);
+
+  players.forEach(({ box, video, btn }) => {
+    const start = () => {
+      // один відгук за раз — решту ставимо на паузу
+      players.forEach(p => {
+        if (p.video !== video) {
+          p.video.pause();
+          p.box.classList.remove('is-playing');
+        }
+      });
+      box.classList.add('is-playing');
+      video.controls = true;          // на обкладинці панель не потрібна
+      const played = video.play();
+      if (played && played.catch) played.catch(() => box.classList.remove('is-playing'));
+    };
+
+    btn.addEventListener('click', start);
+    video.addEventListener('play', () => box.classList.add('is-playing'));
+    video.addEventListener('pause', () => {
+      if (video.currentTime === 0 || video.ended) box.classList.remove('is-playing');
+    });
+    video.addEventListener('ended', () => box.classList.remove('is-playing'));
+  });
 }
 
 /* ---------- Toast ---------- */
