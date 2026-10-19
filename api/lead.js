@@ -20,16 +20,33 @@ const clean = v => String(v == null ? '' : v)
 const esc = s => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
 module.exports = async (req, res) => {
-  if (req.method !== 'POST') {
-    res.status(405).json({ ok: false, error: 'method' });
-    return;
-  }
-
   const token = process.env.TELEGRAM_BOT_TOKEN;
   const chatIds = String(process.env.TELEGRAM_CHAT_ID || '')
     .split(',')
     .map(v => v.trim())
     .filter(Boolean);
+
+  // GET — коротка діагностика: скільки чатів налаштовано і чи вони схожі
+  // на справжні id. Токен і повні id не віддаємо.
+  if (req.method === 'GET') {
+    res.status(200).json({
+      ok: true,
+      hasToken: Boolean(token),
+      chats: chatIds.length,
+      shape: chatIds.map(v => ({
+        valid: /^-?\d+$/.test(v),
+        group: v.startsWith('-'),
+        len: v.length,
+        tail: v.slice(-4)
+      }))
+    });
+    return;
+  }
+
+  if (req.method !== 'POST') {
+    res.status(405).json({ ok: false, error: 'method' });
+    return;
+  }
 
   if (!token || !chatIds.length) {
     console.error('lead: не задані TELEGRAM_BOT_TOKEN або TELEGRAM_CHAT_ID');
@@ -100,5 +117,5 @@ module.exports = async (req, res) => {
     return;
   }
 
-  res.status(200).json({ ok: true });
+  res.status(200).json({ ok: true, sent: results.length - failed.length, failed: failed.length });
 };
