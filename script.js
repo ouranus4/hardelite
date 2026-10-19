@@ -5,12 +5,12 @@
    ========================================================= */
 
 const CONTACTS = {
-  instagramUser: '',                                  // нік без @ — впишіть свій
-  instagram:     '',                                  // https://instagram.com/ваш_нік
-  instagramDM:   '',                                  // https://ig.me/m/ваш_нік
+  instagramUser: 'veronika_logvinenko8801',
+  instagram:     'https://www.instagram.com/veronika_logvinenko8801',
+  instagramDM:   'https://ig.me/m/veronika_logvinenko8801',
   telegram:      'https://t.me/Veronika_logvinenko',
-  tiktok:        '',                                  // https://www.tiktok.com/@ваш_нік
-  email:         '',                                  // пошта для заявок
+  tiktok:        '',                                  // https://www.tiktok.com/ваш_нік
+  email:         'veronikakucer52@gmail.com',
   phone:         '+380 66 170 33 03'
 };
 

@@ -49,7 +49,7 @@ const CONTACTS = {
 | Назва | Що вписати |
 |---|---|
 | `TELEGRAM_BOT_TOKEN` | токен, який видав @BotFather |
-| `TELEGRAM_CHAT_ID` | ваш id від @userinfobot (або id групи) |
+| `TELEGRAM_CHAT_ID` | ваш id, або кілька через кому: `6835234366,-1001234567890` |
 
 Після додавання змінних треба зробити **Redeploy** — інакше вони не підхопляться.
 
