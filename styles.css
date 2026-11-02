@@ -1299,7 +1299,8 @@ img.aud__ph{
     "ico num"
     "ico title"
     "ico sub"
-    "list list";
+    "list list"
+    "cta cta";
   gap:0 22px;
   align-content:start;
 }
@@ -1373,7 +1374,7 @@ img.aud__ph{
   background-repeat:no-repeat;
   background-position:center;
 }
-.slide__cta{grid-area:list;margin-top:26px;justify-self:start}
+.slide__cta{grid-area:cta;margin-top:26px;justify-self:start}
 
 .deck__swipe{
   display:none;
@@ -2412,7 +2413,7 @@ img.ph--reels{width:100%;max-width:100%;height:auto;aspect-ratio:3/2;object-fit:
   .hint{display:none}
   .scope__panel ul{grid-template-columns:minmax(0,1fr)}
   .scope__tab{flex:1 1 100%}
-  .slide{grid-template-columns:minmax(0,1fr);grid-template-areas:"ico" "num" "title" "sub" "list";gap:0}
+  .slide{grid-template-columns:minmax(0,1fr);grid-template-areas:"ico" "num" "title" "sub" "list" "cta";gap:0}
   .slide__ico{width:50px;height:50px}
   .slide__num{margin-top:18px}
   .slide__title{margin-top:8px}
