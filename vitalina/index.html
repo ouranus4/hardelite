@@ -281,6 +281,16 @@ footer .wrap{padding-block:26px;display:flex;flex-wrap:wrap;gap:8px 20px;align-i
 .mini--light .fakebtn{background:#0B0B0C;color:#FFF}
 .mini--light .alt{color:#8B8681}
 
+/* ---- что должно быть до первой продажи ---- */
+.before{border:1px solid var(--line);border-top:3px solid var(--hot);border-radius:6px;background:var(--bg2);padding:clamp(20px,2.6vw,30px);display:flex;flex-direction:column;gap:16px}
+.before .cap{font-size:10.5px;font-weight:800;letter-spacing:.17em;text-transform:uppercase;color:var(--hot)}
+.before ol{margin:0;padding:0;list-style:none;counter-reset:b;display:grid;grid-template-columns:repeat(auto-fit,minmax(272px,1fr));gap:13px}
+.before li{counter-increment:b;display:grid;grid-template-columns:auto minmax(0,1fr);gap:13px;align-items:start}
+.before li::before{content:counter(b);font-family:var(--d);font-weight:800;font-size:12px;line-height:1;color:var(--hot);background:#FFF;border:1px solid var(--line);border-radius:50%;width:26px;height:26px;display:flex;align-items:center;justify-content:center;flex:none}
+.before li b{display:block;font-size:15px;font-weight:700;line-height:1.3;margin-bottom:4px}
+.before li span{display:block;font-size:13.5px;line-height:1.5;color:var(--muted)}
+.before .note{font-size:14.5px;line-height:1.55;color:#2E2A26;border-top:1px solid var(--line);padding-top:15px}
+
 /* ---- экономика и лестница продуктов ---- */
 .why2{display:grid;grid-template-columns:repeat(auto-fit,minmax(272px,1fr));gap:14px}
 .why2 .w{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--hot);border-radius:5px;padding:21px;min-width:0}
@@ -664,6 +674,54 @@ footer .wrap{padding-block:26px;display:flex;flex-wrap:wrap;gap:8px 20px;align-i
         <p>Когда наберётся группа и обратная связь — серия видеоуроков. Собирается на твоих же случаях, а не вслепую.</p>
       </li>
     </ol>
+
+    <div class="before">
+      <span class="cap">Обязательно · до первой продажи</span>
+      <h3>Что должно быть готово, прежде чем снова что-то продавать</h3>
+      <ol>
+        <li>
+          <div>
+            <b>Разобрана аудитория</b>
+            <span>С каким запросом к тебе приходят и какими словами его описывают. Берём из твоих нынешних клиентов, а не из головы.</span>
+          </div>
+        </li>
+        <li>
+          <div>
+            <b>Выбран один запрос и одно обещание</b>
+            <span>Гайд «обо всём сразу» не покупают. Одна проблема, один результат, одна аудитория.</span>
+          </div>
+        </li>
+        <li>
+          <div>
+            <b>Гайд пересобран под этот запрос</b>
+            <span>Текст у тебя есть — его нужно развернуть под выбранную формулировку и дописать переход к консультации.</span>
+          </div>
+        </li>
+        <li>
+          <div>
+            <b>Воронка построена до конца</b>
+            <span>Заранее решено, куда человек идёт после гайда и чем это заканчивается. Не «потом придумаем».</span>
+          </div>
+        </li>
+        <li>
+          <div>
+            <b>Есть страница, на которую можно вести</b>
+            <span>Свой домен, работающая форма, заявки в Telegram и аналитика — иначе измерять будет нечего.</span>
+          </div>
+        </li>
+        <li>
+          <div>
+            <b>Оплата принимается без тебя</b>
+            <span>WayForPay и автовыдача. Пока оплату проверяют вручную, каждая продажа стоит тебе времени и части покупателей.</span>
+          </div>
+        </li>
+      </ol>
+      <p class="note">
+        Пропустить любой из этих пунктов можно — но тогда продажа снова
+        превращается в лотерею. Ровно это и произошло с гайдом в прошлый раз:
+        продукт был, а всего остального не было.
+      </p>
+    </div>
   </div>
 </section>
 
