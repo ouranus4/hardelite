@@ -79,7 +79,7 @@ section>.wrap{padding-block:clamp(44px,7vw,92px)}
 .stack-s{display:flex;flex-direction:column;gap:11px}
 
 h1,h2,h3{margin:0;font-family:var(--d);font-weight:600;text-wrap:balance;letter-spacing:-.02em;line-height:1.06}
-h1{font-size:clamp(33px,6.6vw,70px);font-weight:800}
+h1{font-size:clamp(29px,4.9vw,54px);font-weight:800;max-width:16ch}
 h2{font-size:clamp(25px,4.2vw,46px)}
 h3{font-size:clamp(17px,2.1vw,21px);line-height:1.25;letter-spacing:-.01em}
 p{margin:0}
@@ -152,7 +152,8 @@ p{margin:0}
 
 /* ---- широкая фото-полоса ---- */
 .strip{position:relative;overflow:hidden;border-block:1px solid var(--line)}
-.strip img{width:100%;height:clamp(230px,38vw,430px);object-fit:cover;object-position:50% 34%;display:block}
+.strip img{width:100%;height:clamp(230px,38vw,430px);object-fit:cover;object-position:50% 30%;display:block}
+.strip.right img{object-position:72% 26%}
 .strip .veil{position:absolute;inset:0;background:linear-gradient(90deg,rgba(9,9,11,.94),rgba(9,9,11,.5) 46%,rgba(123,59,232,.34))}
 .strip .on{position:absolute;inset:0;display:flex;align-items:center}
 .strip .on .wrap{width:100%}
@@ -214,11 +215,19 @@ p{margin:0}
 .contacts a:hover{color:var(--gold);border-color:var(--gold)}
 .contacts a:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
 
+.btn{align-self:flex-start;display:inline-flex;align-items:center;gap:10px;padding:15px 27px;border-radius:100px;background:linear-gradient(97deg,var(--hot),var(--gold));color:#190D09;font-family:var(--d);font-weight:800;font-size:13.5px;letter-spacing:.01em;text-decoration:none;box-shadow:0 16px 36px -14px rgba(255,82,69,.9);transition:transform .2s,box-shadow .2s}
+.btn::after{content:"→";font-size:15px}
+.btn:hover{transform:translateY(-2px);box-shadow:0 22px 44px -14px rgba(255,194,74,.85)}
+.btn:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
+
 footer .wrap{padding-block:26px;display:flex;flex-wrap:wrap;gap:8px 20px;align-items:baseline;border-top:1px solid var(--line)}
 
 @media (max-width:880px){
   .hgrid{grid-template-columns:1fr}
-  .shot.hero-shot{aspect-ratio:4/5;order:-1}
+  .shot.hero-shot{aspect-ratio:4/5}
+  .top{gap:6px 14px}
+  .top .right{margin-left:0;font-size:10.5px}
+  .top .small{font-size:12.5px}
   .who{grid-template-columns:1fr}
   .split{grid-template-columns:1fr}
   .flaw{grid-template-columns:1fr;gap:13px}
@@ -253,12 +262,13 @@ footer .wrap{padding-block:26px;display:flex;flex-wrap:wrap;gap:8px 20px;align-i
     <div class="hgrid">
       <div class="htext">
         <span class="badge">Запуск гайда</span>
-        <h1>У тебя уже есть<br>аудитория. Нет <span class="it hotgrad">пути</span>,<br>по которому она<br>доходит до оплаты.</h1>
-        <p class="lead" style="max-width:44ch;margin-top:22px">
+        <h1>У тебя есть аудитория. Нет <span class="it hotgrad">пути</span>, по которому она доходит до оплаты.</h1>
+        <p class="lead" style="max-width:44ch;margin-top:20px">
           Мы прошли весь путь твоего клиента — от ссылки в шапке профиля
           до кнопки «оплатить». Ниже всё, что по дороге ломается,
           и что из этого чинится за одну неделю.
         </p>
+        <a class="btn" href="#cta" style="margin-top:24px">Разобрать мой запуск</a>
       </div>
 
       <div class="shot hero-shot">
@@ -369,12 +379,12 @@ footer .wrap{padding-block:26px;display:flex;flex-wrap:wrap;gap:8px 20px;align-i
     </p>
 
     <div class="feed" aria-label="Публикации из профиля @vitalinka.goncharenko">
-      <figure><img src="/vitalina/img/g1.jpg" alt="Публикация Виталины" loading="lazy"></figure>
-      <figure><img src="/vitalina/img/g2.jpg" alt="Публикация Виталины" loading="lazy"></figure>
-      <figure><img src="/vitalina/img/g3.jpg" alt="Публикация Виталины" loading="lazy"></figure>
-      <figure><img src="/vitalina/img/g4.jpg" alt="Публикация Виталины" loading="lazy"></figure>
-      <figure><img src="/vitalina/img/g5.jpg" alt="Публикация Виталины" loading="lazy"></figure>
-      <figure><img src="/vitalina/img/g6.jpg" alt="Публикация Виталины" loading="lazy"></figure>
+      <figure><img src="/vitalina/img/g1.jpg" alt="Публикация Виталины"></figure>
+      <figure><img src="/vitalina/img/g2.jpg" alt="Публикация Виталины"></figure>
+      <figure><img src="/vitalina/img/g3.jpg" alt="Публикация Виталины"></figure>
+      <figure><img src="/vitalina/img/g4.jpg" alt="Публикация Виталины"></figure>
+      <figure><img src="/vitalina/img/g5.jpg" alt="Публикация Виталины"></figure>
+      <figure><img src="/vitalina/img/g6.jpg" alt="Публикация Виталины"></figure>
     </div>
     <p class="small">
       Визуал у тебя сильный, и он честно отрабатывает охват — поэтому мы его не трогаем.
@@ -429,7 +439,7 @@ footer .wrap{padding-block:26px;display:flex;flex-wrap:wrap;gap:8px 20px;align-i
 </section>
 
 <!-- ====================== ФОТО-ПОЛОСА 2 ====================== -->
-<div class="strip">
+<div class="strip right">
   <img src="/vitalina/img/i5.jpg" alt="Виталина Гончаренко">
   <span class="veil" aria-hidden="true"></span>
   <div class="on">
@@ -630,12 +640,13 @@ footer .wrap{padding-block:26px;display:flex;flex-wrap:wrap;gap:8px 20px;align-i
 </section>
 
 <!-- ====================== CTA ====================== -->
-<section>
+<section id="cta">
   <div class="wrap">
     <div class="cta-wrap">
       <span class="eyebrow">Первый шаг</span>
       <h2>Созвон на 25 минут</h2>
       <p class="lead measure">Разберём тему гайда, посчитаем воронку на твоих цифрах и решим, с чего стартуем. Будем вдвоём — Вероника и Ольга.</p>
+      <a class="btn" href="https://t.me/Veronika_logvinenko" style="margin-top:6px">Написать Веронике в Telegram</a>
       <div class="contacts">
         <a href="https://t.me/Veronika_logvinenko">t.me/Veronika_logvinenko</a>
         <a href="https://www.hard-elite.com">hard-elite.com</a>
