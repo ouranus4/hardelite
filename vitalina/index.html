@@ -1,0 +1,658 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Персональное предложение HARDELITE: разбор сайта и воронки, план запуска гайда за неделю.">
+<link rel="canonical" href="https://www.hard-elite.com/vitalina/">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.hard-elite.com/vitalina/">
+<meta property="og:site_name" content="HARDELITE">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:title" content="Виталине Гончаренко — от HARDELITE">
+<meta property="og:description" content="25 000 подписчиков, ноль форм на сайте. Что ломает путь к оплате и что чинится за неделю.">
+<meta property="og:image" content="https://www.hard-elite.com/vitalina/img/i3.jpg">
+<meta property="og:image:secure_url" content="https://www.hard-elite.com/vitalina/img/i3.jpg">
+<meta property="og:image:width" content="1100">
+<meta property="og:image:height" content="1467">
+<meta property="og:image:alt" content="Виталина Гончаренко">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Виталине Гончаренко — от HARDELITE">
+<meta name="twitter:description" content="25 000 подписчиков, ноль форм на сайте. Что ломает путь к оплате и что чинится за неделю.">
+<meta name="twitter:image" content="https://www.hard-elite.com/vitalina/img/i3.jpg">
+
+<style>
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0}
+  img{max-width:100%}
+  [hidden]{display:none!important}
+  :root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+</style>
+
+<title>Запуск гайда Виталины</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;800&family=Manrope:wght@400;500;600;800&family=Playfair+Display:ital,wght@1,500;1,600&display=swap">
+
+<style>
+/* Layout: тёмная сцена, по которой идут полноэкранные фото из её же ленты;
+   светящиеся градиентные пятна на фоне, зерно поверх, бегущая строка-разделитель.
+   Акценты — коралловый и золото, взяты из её же кадров (красный неон, вечерние платья). */
+:root{
+  --bg:#09090B;
+  --bg2:#101014;
+  --card:#141418;
+  --fg:#F6F3F0;
+  --muted:#9B948E;
+  --dim:#6E6862;
+  --line:rgba(246,243,240,.14);
+  --hot:#FF5245;
+  --gold:#FFC24A;
+  --violet:#7B3BE8;
+  --d:'Unbounded','Manrope',system-ui,sans-serif;
+  --b:'Manrope','Segoe UI',system-ui,sans-serif;
+  --s:'Playfair Display',Georgia,serif;
+  --grain:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='0.42'/%3E%3C/svg%3E");
+  color-scheme:dark;
+}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--b);font-size:16px;line-height:1.62;-webkit-font-smoothing:antialiased;position:relative;overflow-x:hidden}
+
+/* ---- светящиеся пятна + зерно ---- */
+.glow{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.glow i{position:absolute;display:block;border-radius:50%;filter:blur(90px);opacity:.5}
+.glow i:nth-child(1){width:52vmax;height:52vmax;left:-18vmax;top:-16vmax;background:radial-gradient(circle,#FF5245,transparent 62%);animation:drift1 26s ease-in-out infinite alternate}
+.glow i:nth-child(2){width:46vmax;height:46vmax;right:-16vmax;top:22vh;background:radial-gradient(circle,#7B3BE8,transparent 62%);animation:drift2 32s ease-in-out infinite alternate}
+.glow i:nth-child(3){width:40vmax;height:40vmax;left:28vw;bottom:-18vmax;background:radial-gradient(circle,#FFC24A,transparent 64%);opacity:.32;animation:drift1 38s ease-in-out infinite alternate-reverse}
+@keyframes drift1{to{transform:translate3d(9vw,7vh,0) scale(1.14)}}
+@keyframes drift2{to{transform:translate3d(-11vw,-6vh,0) scale(1.1)}}
+.noise{position:fixed;inset:0;z-index:1;pointer-events:none;background-image:var(--grain);opacity:.16;mix-blend-mode:overlay}
+.page{position:relative;z-index:2}
+
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+section>.wrap{padding-block:clamp(44px,7vw,92px)}
+.measure{max-width:62ch}
+.stack{display:flex;flex-direction:column;gap:clamp(16px,2.2vw,26px)}
+.stack-s{display:flex;flex-direction:column;gap:11px}
+
+h1,h2,h3{margin:0;font-family:var(--d);font-weight:600;text-wrap:balance;letter-spacing:-.02em;line-height:1.06}
+h1{font-size:clamp(33px,6.6vw,70px);font-weight:800}
+h2{font-size:clamp(25px,4.2vw,46px)}
+h3{font-size:clamp(17px,2.1vw,21px);line-height:1.25;letter-spacing:-.01em}
+p{margin:0}
+.it{font-family:var(--s);font-style:italic;font-weight:500;letter-spacing:0}
+.hotgrad{background:linear-gradient(97deg,var(--hot),var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent}
+
+.eyebrow{font-family:var(--b);font-size:10.5px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+.lead{font-size:clamp(17px,1.9vw,20px);line-height:1.55;color:#DCD6D0}
+.small{font-size:14px;line-height:1.58;color:var(--muted)}
+.dimtext{color:var(--dim)}
+
+/* ---- HERO ---- */
+.hero .wrap{padding-block:clamp(22px,3.4vw,44px) clamp(34px,5vw,64px)}
+.top{display:flex;flex-wrap:wrap;align-items:center;gap:10px 18px;padding-block:14px;border-bottom:1px solid var(--line);margin-bottom:clamp(28px,4.4vw,52px)}
+.logo{font-family:var(--d);font-weight:800;font-size:15px;letter-spacing:.09em;background:linear-gradient(97deg,var(--hot),var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent}
+.top .small{color:var(--dim)}
+.top .right{margin-left:auto;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim)}
+
+.hgrid{display:grid;grid-template-columns:1.08fr .92fr;gap:clamp(24px,3.6vw,54px);align-items:center}
+.htext{min-width:0}
+.badge{display:inline-flex;align-items:center;gap:9px;padding:7px 14px;border:1px solid rgba(255,82,69,.45);border-radius:100px;background:rgba(255,82,69,.1);font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:#FF8A80;margin-bottom:20px}
+.badge::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--hot);box-shadow:0 0 0 0 rgba(255,82,69,.6);animation:pulse 2.4s ease-out infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 11px rgba(255,82,69,0)}100%{box-shadow:0 0 0 0 rgba(255,82,69,0)}}
+
+.shot{position:relative;border-radius:5px;overflow:hidden;aspect-ratio:4/5;max-width:100%;background:var(--bg2);box-shadow:0 30px 80px -28px rgba(255,82,69,.5),0 0 0 1px var(--line)}
+.shot img{width:100%;height:100%;object-fit:cover;display:block}
+.shot::after{content:"";position:absolute;inset:0;background:linear-gradient(168deg,rgba(255,82,69,.26),transparent 44%,rgba(123,59,232,.3));mix-blend-mode:soft-light;pointer-events:none}
+.shot .sheen{position:absolute;top:0;bottom:0;width:46%;left:-60%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.3),transparent);transform:skewX(-14deg);animation:sheen 7.5s ease-in-out 1.6s infinite;pointer-events:none}
+@keyframes sheen{0%{left:-60%}38%,100%{left:130%}}
+.shot.hero-shot{aspect-ratio:3/4}
+.sticker{position:absolute;right:-10px;bottom:16px;z-index:3;transform:rotate(-7deg);background:var(--gold);color:#17120A;font-family:var(--d);font-weight:800;font-size:12px;letter-spacing:.06em;padding:10px 15px;border-radius:3px;box-shadow:0 12px 30px -10px rgba(255,194,74,.7);text-align:center;line-height:1.25}
+
+.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:clamp(28px,4vw,46px)}
+.fact{background:linear-gradient(170deg,rgba(255,255,255,.07),rgba(255,255,255,.02));border:1px solid var(--line);border-radius:5px;padding:20px 18px;min-width:0;position:relative;overflow:hidden}
+.fact::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--hot)}
+.fact.good::before{background:var(--gold)}
+.fact b{display:block;font-family:var(--d);font-weight:800;font-size:clamp(30px,5.2vw,50px);line-height:1;font-variant-numeric:tabular-nums}
+.fact.good b{background:linear-gradient(97deg,var(--gold),#FFE7A8);-webkit-background-clip:text;background-clip:text;color:transparent}
+.fact.bad b{background:linear-gradient(97deg,var(--hot),#FF9A72);-webkit-background-clip:text;background-clip:text;color:transparent}
+.fact span{display:block;margin-top:11px;font-size:12.5px;line-height:1.48;color:var(--muted)}
+
+/* ---- бегущая строка ---- */
+.ticker{border-block:1px solid var(--line);background:rgba(255,82,69,.07);overflow:hidden;white-space:nowrap}
+.ticker .row{display:inline-flex;gap:0;animation:run 34s linear infinite;will-change:transform}
+.ticker span{display:inline-flex;align-items:center;gap:18px;padding:13px 0;font-family:var(--d);font-weight:600;font-size:13px;letter-spacing:.07em;text-transform:uppercase;color:#E8E1DB}
+.ticker span::after{content:"◆";color:var(--hot);font-size:9px;margin:0 22px}
+@keyframes run{to{transform:translateX(-50%)}}
+
+/* ---- улики ---- */
+.ev-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(258px,1fr));gap:14px}
+.ev{background:var(--card);border:1px solid var(--line);border-radius:5px;padding:22px;display:flex;flex-direction:column;gap:12px;min-width:0;transition:border-color .25s,transform .25s}
+.ev:hover{border-color:rgba(255,82,69,.5);transform:translateY(-3px)}
+.ev .tag{font-size:10px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--dim)}
+.ev code{display:block;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:12.5px;line-height:1.5;background:#0C0C0F;border:1px solid var(--line);border-left:2px solid var(--hot);border-radius:3px;padding:12px;color:#FFB4A8;overflow-wrap:anywhere}
+.ev p{font-size:14.5px;line-height:1.55;color:var(--muted)}
+
+/* ---- разрыв ---- */
+.split{display:grid;grid-template-columns:1fr auto 1fr;gap:clamp(14px,2.6vw,30px);align-items:stretch}
+.side{background:var(--card);border:1px solid var(--line);border-radius:5px;padding:clamp(20px,2.4vw,28px);display:flex;flex-direction:column;gap:13px;min-width:0}
+.side.a{box-shadow:inset 0 3px 0 var(--gold)}
+.side.b{box-shadow:inset 0 3px 0 var(--hot)}
+.quote{font-size:14.5px;line-height:1.5;background:#0C0C0F;border:1px solid var(--line);border-radius:3px;padding:13px;overflow-wrap:anywhere;color:#E8E1DB}
+.vs{display:flex;align-items:center;justify-content:center;font-family:var(--s);font-style:italic;font-size:22px;color:var(--dim)}
+
+/* ---- лента ---- */
+.feed{display:grid;grid-template-columns:repeat(6,1fr);gap:9px}
+.feed figure{margin:0;aspect-ratio:4/5;overflow:hidden;border-radius:4px;background:var(--bg2);max-width:100%;border:1px solid var(--line);transition:transform .3s}
+.feed figure:hover{transform:translateY(-4px) scale(1.03)}
+.feed img{width:100%;height:100%;object-fit:cover;display:block}
+
+/* ---- широкая фото-полоса ---- */
+.strip{position:relative;overflow:hidden;border-block:1px solid var(--line)}
+.strip img{width:100%;height:clamp(230px,38vw,430px);object-fit:cover;object-position:50% 34%;display:block}
+.strip .veil{position:absolute;inset:0;background:linear-gradient(90deg,rgba(9,9,11,.94),rgba(9,9,11,.5) 46%,rgba(123,59,232,.34))}
+.strip .on{position:absolute;inset:0;display:flex;align-items:center}
+.strip .on .wrap{width:100%}
+.strip h2{max-width:17ch}
+
+/* ---- прошлый подход ---- */
+.flaws{display:flex;flex-direction:column;gap:12px}
+.flaw{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:clamp(12px,2.6vw,30px);background:var(--card);border:1px solid var(--line);border-radius:5px;padding:clamp(18px,2.2vw,24px)}
+.flaw .was{color:var(--muted);font-size:14.5px;line-height:1.55}
+.flaw .was b{display:block;color:var(--fg);font-family:var(--d);font-weight:600;font-size:15px;line-height:1.3;margin-bottom:8px;letter-spacing:-.01em}
+.flaw .why{font-size:14.5px;line-height:1.55;color:#DCD6D0;border-left:2px solid var(--hot);padding-left:15px}
+
+/* ---- неделя ---- */
+.week{display:flex;flex-direction:column}
+.day{display:grid;grid-template-columns:auto minmax(0,1fr);gap:clamp(14px,2.6vw,32px);padding:22px 0;border-top:1px solid var(--line)}
+.day:last-child{border-bottom:1px solid var(--line)}
+.day .no{font-family:var(--d);font-weight:800;font-size:clamp(30px,4.6vw,48px);line-height:.92;font-variant-numeric:tabular-nums;background:linear-gradient(160deg,var(--gold),var(--hot));-webkit-background-clip:text;background-clip:text;color:transparent;min-width:2.1ch}
+.day .no small{display:block;font-family:var(--b);font-size:10px;font-weight:800;letter-spacing:.17em;text-transform:uppercase;color:var(--dim);margin-top:10px;-webkit-text-fill-color:var(--dim)}
+.day ul{margin:10px 0 0;padding-left:18px;color:var(--muted);font-size:14.5px;line-height:1.6}
+.day li{margin-bottom:4px}
+.day li::marker{color:var(--hot)}
+
+/* ---- месяцы / воронка ---- */
+.months{display:grid;grid-template-columns:repeat(auto-fit,minmax(236px,1fr));gap:14px}
+.m{background:var(--card);border:1px solid var(--line);border-radius:5px;padding:22px;display:flex;flex-direction:column;gap:11px;min-width:0}
+.model{background:var(--card);border:1px solid var(--line);border-radius:5px;overflow:hidden}
+.model-head{padding:16px 20px;border-bottom:1px solid var(--line);display:flex;flex-wrap:wrap;gap:8px 16px;align-items:baseline}
+.model-head b{font-family:var(--d);font-weight:600;font-size:14px}
+.scroller{overflow-x:auto}
+.model table{width:100%;border-collapse:collapse;font-size:14.5px}
+.model th,.model td{text-align:left;padding:12px 20px;border-bottom:1px solid var(--line)}
+.model th{font-weight:800;color:var(--dim);font-size:10.5px;letter-spacing:.15em;text-transform:uppercase}
+.model td:last-child{text-align:right;font-variant-numeric:tabular-nums;font-weight:700;white-space:nowrap;color:var(--gold)}
+.model tr:last-child td{border-bottom:0}
+.model tr.total td{background:rgba(255,82,69,.09);font-size:15.5px}
+.model tr.total td:last-child{color:var(--hot)}
+
+/* ---- кто мы / что нужно / цена ---- */
+.who{display:grid;grid-template-columns:.86fr 1.14fr;gap:clamp(22px,3.4vw,50px);align-items:center}
+.people{display:flex;flex-direction:column;gap:16px}
+.person{display:grid;grid-template-columns:auto minmax(0,1fr);gap:15px;align-items:start}
+.dot{width:10px;height:10px;border-radius:50%;background:var(--hot);margin-top:8px;box-shadow:0 0 14px 2px rgba(255,82,69,.6)}
+.dot.g{background:var(--gold);box-shadow:0 0 14px 2px rgba(255,194,74,.55)}
+.person b{font-family:var(--d);font-weight:600;font-size:15px}
+.person span{display:block;color:var(--muted);font-size:14.5px;line-height:1.55;margin-top:4px}
+
+.need{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:12px}
+.need div{background:var(--card);border:1px solid var(--line);border-radius:5px;padding:17px;font-size:14.5px;line-height:1.5;color:var(--muted);min-width:0}
+.need b{display:block;font-size:10.5px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:7px}
+
+.price{display:grid;grid-template-columns:repeat(auto-fit,minmax(252px,1fr));gap:14px}
+.pr{border:1px solid var(--line);border-radius:5px;padding:24px;display:flex;flex-direction:column;gap:13px;min-width:0;background:var(--card)}
+.pr.key{border-color:rgba(255,194,74,.55);background:linear-gradient(168deg,rgba(255,194,74,.12),rgba(255,82,69,.06))}
+.pr .amount{font-family:var(--d);font-weight:600;font-size:clamp(19px,2.6vw,24px);line-height:1.2}
+
+.cta-wrap{border:1px solid rgba(255,82,69,.4);border-radius:6px;background:linear-gradient(150deg,rgba(255,82,69,.14),rgba(123,59,232,.1));padding:clamp(26px,4vw,48px);display:flex;flex-direction:column;gap:16px}
+.contacts{display:flex;flex-wrap:wrap;gap:12px 26px;margin-top:4px}
+.contacts a{color:var(--fg);text-decoration:none;font-weight:700;font-size:15px;border-bottom:2px solid var(--hot);padding-bottom:2px}
+.contacts a:hover{color:var(--gold);border-color:var(--gold)}
+.contacts a:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
+
+footer .wrap{padding-block:26px;display:flex;flex-wrap:wrap;gap:8px 20px;align-items:baseline;border-top:1px solid var(--line)}
+
+@media (max-width:880px){
+  .hgrid{grid-template-columns:1fr}
+  .shot.hero-shot{aspect-ratio:4/5;order:-1}
+  .who{grid-template-columns:1fr}
+  .split{grid-template-columns:1fr}
+  .flaw{grid-template-columns:1fr;gap:13px}
+  .flaw .why{border-left:0;border-top:2px solid var(--hot);padding-left:0;padding-top:13px}
+  .feed{grid-template-columns:repeat(3,1fr)}
+  .facts{grid-template-columns:1fr}
+  .strip .veil{background:linear-gradient(180deg,rgba(9,9,11,.5),rgba(9,9,11,.93) 62%)}
+  .strip .on{align-items:flex-end;padding-bottom:22px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .ticker .row{transform:none}
+}
+</style>
+</head>
+<body>
+
+<div class="glow" aria-hidden="true"><i></i><i></i><i></i></div>
+<div class="noise" aria-hidden="true"></div>
+
+<div class="page">
+
+<!-- ====================== HERO ====================== -->
+<header class="hero">
+  <div class="wrap">
+    <div class="top">
+      <span class="logo">HARDELITE</span>
+      <span class="small">SMM &amp; PR агенція</span>
+      <span class="right">для Виталины Гончаренко</span>
+    </div>
+
+    <div class="hgrid">
+      <div class="htext">
+        <span class="badge">Запуск гайда</span>
+        <h1>У тебя уже есть<br>аудитория. Нет <span class="it hotgrad">пути</span>,<br>по которому она<br>доходит до оплаты.</h1>
+        <p class="lead" style="max-width:44ch;margin-top:22px">
+          Мы прошли весь путь твоего клиента — от ссылки в шапке профиля
+          до кнопки «оплатить». Ниже всё, что по дороге ломается,
+          и что из этого чинится за одну неделю.
+        </p>
+      </div>
+
+      <div class="shot hero-shot">
+        <img src="img/i3.jpg" alt="Виталина Гончаренко">
+        <span class="sheen" aria-hidden="true"></span>
+        <span class="sticker">25 000<br>подписчиков</span>
+      </div>
+    </div>
+
+    <div class="facts">
+      <div class="fact good">
+        <b>25 000</b>
+        <span>подписчиков в Instagram. Это актив, который ты уже оплатила годами работы в кадре</span>
+      </div>
+      <div class="fact bad">
+        <b>0</b>
+        <span>форм на сайте. Ни один контакт не сохраняется — всё упирается в Direct</span>
+      </div>
+      <div class="fact bad">
+        <b>1</b>
+        <span>ссылка в шапке, и она открывается чужим превью «Hello, I Am Susan Allen»</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="ticker" aria-hidden="true">
+  <div class="row">
+    <span>Упаковка гайда</span><span>Лендинг на своём домене</span><span>Оплата с автовыдачей</span><span>Прогрев</span><span>Meta Ads</span><span>Воронка в боте</span>
+    <span>Упаковка гайда</span><span>Лендинг на своём домене</span><span>Оплата с автовыдачей</span><span>Прогрев</span><span>Meta Ads</span><span>Воронка в боте</span>
+  </div>
+</div>
+
+<!-- ====================== УЛИКИ ====================== -->
+<section>
+  <div class="wrap stack">
+    <div class="measure stack-s">
+      <span class="eyebrow">Что видит человек, который тебя нашёл</span>
+      <h2>Три вещи, которые <span class="it hotgrad">ломают</span> переход ещё до того, как он случился</h2>
+      <p class="small">Это не про вкус и не про дизайн. Это проверяется за тридцать секунд с телефона.</p>
+    </div>
+
+    <div class="ev-grid">
+      <article class="ev">
+        <span class="tag">Название вкладки и строка в Google</span>
+        <code>Videographer / Video Production Website Template Demo</code>
+        <p>Поисковик и браузер подписывают твой сайт как демо-шаблон для видеографа. Имени Виталины там нет вообще.</p>
+      </article>
+
+      <article class="ev">
+        <span class="tag">Превью ссылки в Direct и сторис</span>
+        <code>Hello, I Am Susan Allen<br>«Videography is the art of capturing moments…»</code>
+        <p>Человек видит чужую женщину и английский текст про видеосъёмку. Ссылка выглядит битой — её не открывают. Это и есть то самое «не открывается ничего».</p>
+      </article>
+
+      <article class="ev">
+        <span class="tag">Форма заявки</span>
+        <code>&lt;form&gt; — 0 штук на странице</code>
+        <p>Кнопка «Записатись» ведёт на якорь ниже. Кто не написал в Direct в ту же минуту — потерян, и мы даже не знаем, сколько их было.</p>
+      </article>
+    </div>
+
+    <p class="small measure">
+      Плюс поверх страницы — синий баннер «Create your own website» от конструктора,
+      адрес третьего уровня вместо домена, язык страницы в коде помечен как английский,
+      прайс выведен дважды подряд, а гайда на сайте нет вообще. И нет политики
+      конфиденциальности — для психолога это и юридический риск, и одна из частых
+      причин отказов на модерации в Meta.
+    </p>
+  </div>
+</section>
+
+<!-- ====================== ФОТО-ПОЛОСА ====================== -->
+<div class="strip">
+  <img src="img/i4.jpg" alt="Виталина на съёмке">
+  <span class="veil" aria-hidden="true"></span>
+  <div class="on">
+    <div class="wrap">
+      <span class="eyebrow">Главное расхождение</span>
+      <h2 style="margin-top:12px">Профиль обещает одно, а продукт продаёт <span class="it hotgrad">другое</span></h2>
+    </div>
+  </div>
+</div>
+
+<!-- ====================== РАЗРЫВ ====================== -->
+<section>
+  <div class="wrap stack">
+    <div class="split">
+      <div class="side a">
+        <span class="eyebrow">Что обещает твой профиль</span>
+        <div class="quote">Віталіна Гончаренко | Психолог | КПТ | Невроз | Панічні Атаки | ОКР 🇺🇦</div>
+        <p class="small">То же самое — в блоке «Запити» на сайте: невроз, панические атаки, ОКР, ВСД, тревога, ПТСР. Это и есть то, с чем ты реально работаешь и за чем к тебе идут.</p>
+      </div>
+
+      <div class="vs">против</div>
+
+      <div class="side b">
+        <span class="eyebrow">Куда уехала тема гайда</span>
+        <div class="quote">«секс и деньги»</div>
+        <p class="small">В нише психологии это читается как инфоцыганство и обесценивает всё остальное, что ты делаешь. Для рилсов тема работает. Для платного гайда психолога — нет.</p>
+      </div>
+    </div>
+
+    <p class="lead measure">
+      Гайд надо строить там, где у тебя экспертность и спрос сходятся:
+      <span class="it hotgrad">паническая атака, тревога, ПТСР</span>. Это запрос,
+      который сейчас есть у каждого второго — и он уже написан у тебя в шапке.
+    </p>
+
+    <div class="feed" aria-label="Публикации из профиля @vitalinka.goncharenko">
+      <figure><img src="img/g1.jpg" alt="Публикация Виталины" loading="lazy"></figure>
+      <figure><img src="img/g2.jpg" alt="Публикация Виталины" loading="lazy"></figure>
+      <figure><img src="img/g3.jpg" alt="Публикация Виталины" loading="lazy"></figure>
+      <figure><img src="img/g4.jpg" alt="Публикация Виталины" loading="lazy"></figure>
+      <figure><img src="img/g5.jpg" alt="Публикация Виталины" loading="lazy"></figure>
+      <figure><img src="img/g6.jpg" alt="Публикация Виталины" loading="lazy"></figure>
+    </div>
+    <p class="small">
+      Визуал у тебя сильный, и он честно отрабатывает охват — поэтому мы его не трогаем.
+      И в шапке стоит эфир на СТБ («Супер мама», «Мамо, Ваш вихід») — доказательство,
+      которого нет ни на сайте, ни в боте, ни на пути к оплате.
+      Вопрос не в том, чтобы снимать больше. Вопрос в том, куда это всё ведёт.
+    </p>
+  </div>
+</section>
+
+<!-- ====================== ПРОШЛЫЙ ПОДХОД ====================== -->
+<section>
+  <div class="wrap stack">
+    <div class="measure stack-s">
+      <span class="eyebrow">Что предлагали до нас</span>
+      <h2>Схема рабочая на словах. <span class="it hotgrad">Дорогая</span> в реальности.</h2>
+      <p class="small">Мы не спорим с подрядчиком. Просто показываем, чем каждое решение обернётся через месяц.</p>
+    </div>
+
+    <div class="flaws">
+      <div class="flaw">
+        <div class="was"><b>Гайд как закрытый Telegram-канал «за символическую сумму»</b>Доступ продаётся дёшево или вовсе за подписку.</div>
+        <div class="why">Символическая цена — приговор продукту: поднять её потом почти невозможно, а аудитория запоминает, сколько стоит твоя экспертиза. И в закрытом канале покупатели видят друг друга и твою посещаемость.</div>
+      </div>
+
+      <div class="flaw">
+        <div class="was"><b>Два бота: один в Instagram проверяет подписку, второй в Telegram выдаёт доступ</b>Плюс доступ к твоему Instagram, чтобы подключить первого.</div>
+        <div class="why">Это та самая ручная морока с проверками, из-за которой теряются оплаты. Человек готов платить сейчас — а получает квест из двух ботов. Нужен один путь: оплатил — получил, без участия человека.</div>
+      </div>
+
+      <div class="flaw">
+        <div class="was"><b>«Если гайда нет, есть только тема — напишу я, тогда цена будет больше»</b></div>
+        <div class="why">Содержание гайда психолога должен писать психолог. Ты продаёшь экспертность — это единственное, что нельзя отдать на подряд. Мы собираем структуру, вытаскиваем из тебя материал и упаковываем, но текст остаётся твой.</div>
+      </div>
+
+      <div class="flaw">
+        <div class="was"><b>Сайт не нужен: Taplink, Linktree, Google Forms</b></div>
+        <div class="why">После такого запуска у тебя не остаётся ничего своего: ни домена, ни базы контактов, ни страницы, на которую можно лить рекламу. Актив остаётся у сервисов, а ты каждый раз начинаешь заново.</div>
+      </div>
+
+      <div class="flaw">
+        <div class="was"><b>Рекламный кабинет завести на другой странице Facebook</b>Потому что у текущей уже плохая история.</div>
+        <div class="why">Это обход, а не решение: история страницы никуда не девается, а ты теряешь связь рекламы со своим профилем. Причина блокировок — формулировки, и лечатся они текстами, а не новым аккаунтом.</div>
+      </div>
+
+      <div class="flaw">
+        <div class="was"><b>Главное противоречие</b>В тех же материалах сказано: Meta режет слова «панічні атаки», «тривога», «депресія» как Personal Attributes.</div>
+        <div class="why">То есть проблема названа верно — а решения в схеме нет. Рекламу гайда про панические атаки нужно писать так, чтобы она проходила модерацию: говорить о состоянии, не приписывая его читателю. Это делается на уровне оферты и креативов, до первого запуска.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== ФОТО-ПОЛОСА 2 ====================== -->
+<div class="strip">
+  <img src="img/i5.jpg" alt="Виталина Гончаренко">
+  <span class="veil" aria-hidden="true"></span>
+  <div class="on">
+    <div class="wrap">
+      <span class="eyebrow">Что мы делаем за неделю</span>
+      <h2 style="margin-top:12px">Пять дней — и у тебя есть <span class="it hotgrad">работающий</span> путь к оплате</h2>
+    </div>
+  </div>
+</div>
+
+<!-- ====================== НЕДЕЛЯ ====================== -->
+<section>
+  <div class="wrap stack">
+    <p class="small measure">Без съёмок, без рекламного бюджета и без переделки профиля. Только то, что чинится текстом, страницей и настройкой.</p>
+
+    <div class="week">
+      <div class="day">
+        <div class="no">01<small>Понедельник</small></div>
+        <div>
+          <h3>Тема, оферта и структура гайда</h3>
+          <ul>
+            <li>Выбираем одну проблему, один результат, одну аудиторию</li>
+            <li>Формулируем обещание так, чтобы оно проходило модерацию Meta</li>
+            <li>Собираем оглавление гайда и список того, что нужно от тебя голосовыми</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="day">
+        <div class="no">02<small>Вторник</small></div>
+        <div>
+          <h3>Сам гайд</h3>
+          <ul>
+            <li>Твой материал превращаем в готовый документ: структура, заголовки, упражнения</li>
+            <li>Обложка и вёрстка в твоём визуале</li>
+            <li>Внутри — переход к консультации, чтобы гайд был первой ступенью, а не финалом</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="day">
+        <div class="no">03<small>Среда</small></div>
+        <div>
+          <h3>Лендинг на своём домене</h3>
+          <ul>
+            <li>Одна страница: гайд, запись на консультацию, пакет на 10 сессий</li>
+            <li>Форма, заявки из которой падают сразу в Telegram</li>
+            <li>Нормальные заголовок, описание и превью ссылки — чтобы её открывали</li>
+            <li>Политика конфиденциальности и согласие на обработку данных</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="day">
+        <div class="no">04<small>Четверг</small></div>
+        <div>
+          <h3>Оплата и автовыдача</h3>
+          <ul>
+            <li>Подключаем платёжную систему: LiqPay, WayForPay, Fondy или Mono</li>
+            <li>Оплатил — сразу получил гайд. Без проверок вручную и без ожидания</li>
+            <li>Название товара в платёжке формулируем так, чтобы не ловить блокировки</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="day">
+        <div class="no">05<small>Пятница</small></div>
+        <div>
+          <h3>Прогрев и запуск на свою базу</h3>
+          <ul>
+            <li>Сценарии сторис и рилсов на 5–7 дней под выбранную тему</li>
+            <li>Запускаемся на 25 000 своих — без рекламного бюджета</li>
+            <li>Снимаем первые цифры: переходы, конверсия страницы, оплаты</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <p class="lead measure">
+      К концу недели у тебя есть свой домен, страница, которая собирает контакты,
+      и продукт, который выдаётся сам. Дальше это уже можно
+      <span class="it hotgrad">масштабировать деньгами</span>, а не надеждой.
+    </p>
+  </div>
+</section>
+
+<!-- ====================== ДАЛЬШЕ ====================== -->
+<section>
+  <div class="wrap stack">
+    <div class="measure stack-s">
+      <span class="eyebrow">Что идёт дальше</span>
+      <h2>Первый месяц даёт цифры. Второй — <span class="it hotgrad">предсказуемость</span>.</h2>
+    </div>
+
+    <div class="months">
+      <div class="m">
+        <span class="eyebrow">Месяц 1</span>
+        <h3>Запуск на своих</h3>
+        <p class="small">Продажи гайда без рекламы, с собственной аудитории. Параллельно — мягкий контент, чтобы страница «успокоилась» перед рекламой. Получаем первую честную конверсию: сколько из тысячи просмотров доходит до оплаты.</p>
+      </div>
+      <div class="m">
+        <span class="eyebrow">Месяц 2</span>
+        <h3>Реклама и база</h3>
+        <p class="small">Чистый кабинет, креативы, которые проходят модерацию, тесты аудиторий на небольшом бюджете. Гайд начинает приводить не только деньги, но и контакты — базу, которой у тебя сейчас нет совсем.</p>
+      </div>
+      <div class="m">
+        <span class="eyebrow">Месяц 3</span>
+        <h3>Масштаб и апсейл</h3>
+        <p class="small">Масштабируем то, что сработало. Включаем вторую ступень: из купивших гайд — в консультацию и в пакет на 10 сессий. Это и есть деньги запуска, гайд здесь — вход, а не касса.</p>
+      </div>
+    </div>
+
+    <div class="model">
+      <div class="model-head">
+        <b>Как считается воронка</b>
+        <span class="small">Пример на круглых числах, чтобы показать логику. На созвоне подставим твои охваты, цену гайда и консультации.</span>
+      </div>
+      <div class="scroller">
+        <table>
+          <thead>
+            <tr><th>Шаг</th><th>Что меряем</th><th>Пример</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Аудитория</td><td>подписчиков в Instagram</td><td>25 000</td></tr>
+            <tr><td>Увидели прогрев</td><td>охват серии сторис и рилсов</td><td>~4 000</td></tr>
+            <tr><td>Перешли на страницу</td><td>клики по ссылке</td><td>~400</td></tr>
+            <tr><td>Оплатили гайд</td><td>конверсия лендинга</td><td>~20–40</td></tr>
+            <tr class="total"><td>Дошли до консультации</td><td>апсейл из купивших гайд</td><td>~2–5</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <p class="small measure">
+      Мы не обещаем конкретную сумму и не назовём её, пока не увидим твои цифры.
+      Смысл таблицы в другом: сегодня ни один из этих шагов не измеряется вообще,
+      потому что мерить нечем — нет ни страницы, ни формы, ни статистики.
+      После недели работы каждая строчка становится числом, на которое можно влиять.
+    </p>
+  </div>
+</section>
+
+<!-- ====================== КТО МЫ ====================== -->
+<section>
+  <div class="wrap">
+    <div class="who">
+      <div class="shot"><img src="img/i2.jpg" alt="Виталина Гончаренко"><span class="sheen" aria-hidden="true"></span></div>
+      <div class="stack">
+        <span class="eyebrow">Кто будет это делать</span>
+        <h2>Вдвоём, и каждая — <span class="it hotgrad">в своём</span></h2>
+        <div class="people">
+          <div class="person">
+            <span class="dot"></span>
+            <div><b>Вероника Логвиненко</b><span>Основательница HARDELITE. Стратегия, контент, съёмки и трафик: позиционирование, сценарии рилсов, реклама в Meta и аналитика по месяцам.</span></div>
+          </div>
+          <div class="person">
+            <span class="dot g"></span>
+            <div><b>Ольга</b><span>Упаковка инфопродуктов и воронки: структура гайда, лендинг, подключение оплаты и автовыдачи, путь от первого касания до второй покупки.</span></div>
+          </div>
+        </div>
+        <p class="small">Мы не присылаем шаблонных предложений. Эта страница собрана под Виталину: всё, что выше, взято с её сайта, из её профиля и из её же бота.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== ЧТО НУЖНО + ЦЕНА ====================== -->
+<section>
+  <div class="wrap stack">
+    <div class="measure stack-s">
+      <span class="eyebrow">Что нужно от тебя</span>
+      <h2>Четыре вещи, дальше работаем мы</h2>
+    </div>
+    <div class="need">
+      <div><b>Материал</b>Голосовые или черновик по теме гайда — то, что ты и так рассказываешь клиентам.</div>
+      <div><b>Доступы</b>Instagram и бот. Пароли меняешь сразу после настройки.</div>
+      <div><b>Фото и видео</b>Что есть — используем. Чего нет — снимаем на контент-дне.</div>
+      <div><b>ФОП и платёжка</b>Если ещё нет — подключение берём на себя.</div>
+    </div>
+
+    <div class="measure stack-s" style="margin-top:clamp(20px,3vw,34px)">
+      <span class="eyebrow">Как считаем деньги</span>
+      <h2>Два разных счёта, и путать их не надо</h2>
+    </div>
+    <div class="price">
+      <div class="pr key">
+        <span class="eyebrow">Разово</span>
+        <div class="amount">Упаковка и запуск</div>
+        <p class="small">Гайд, лендинг на домене, оплата с автовыдачей, прогрев, первый запуск на свою аудиторию. Делается один раз и остаётся твоим навсегда.</p>
+      </div>
+      <div class="pr">
+        <span class="eyebrow" style="color:var(--muted)">Ежемесячно</span>
+        <div class="amount">Ведение и трафик</div>
+        <p class="small">Контент, съёмки, реклама в Meta, аналитика. Подключается, когда фундамент уже стоит — иначе бюджет льётся в дырявое.</p>
+      </div>
+    </div>
+    <p class="small measure">Суммы фиксированные, без почасовой. Называем на созвоне, когда увидим объём по гайду и по контенту.</p>
+  </div>
+</section>
+
+<!-- ====================== CTA ====================== -->
+<section>
+  <div class="wrap">
+    <div class="cta-wrap">
+      <span class="eyebrow">Первый шаг</span>
+      <h2>Созвон на 25 минут</h2>
+      <p class="lead measure">Разберём тему гайда, посчитаем воронку на твоих цифрах и решим, с чего стартуем. Будем вдвоём — Вероника и Ольга.</p>
+      <div class="contacts">
+        <a href="https://t.me/Veronika_logvinenko">t.me/Veronika_logvinenko</a>
+        <a href="https://www.hard-elite.com">hard-elite.com</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span class="logo">HARDELITE</span>
+    <span class="small">SMM &amp; PR агенція · Вероника Логвиненко и Ольга</span>
+    <span class="small dimtext" style="margin-left:auto">Персонально для Виталины Гончаренко</span>
+  </div>
+</footer>
+
+</div>
+
+</body>
+</html>
