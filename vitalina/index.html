@@ -241,6 +241,14 @@ section[id],div[id]{scroll-margin-top:18px}
 
 footer .wrap{padding-block:26px;display:flex;flex-wrap:wrap;gap:8px 20px;align-items:baseline;border-top:1px solid var(--line)}
 
+/* ---- скриншоты «как сейчас» ---- */
+.shots{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(14px,2.4vw,24px);align-items:start}
+.shots-head{grid-column:1/-1;border-left:3px solid var(--hot);padding-left:16px}
+.snap{margin:0;display:flex;flex-direction:column;gap:12px;min-width:0}
+.snap .mock img{width:100%;height:auto;display:block;border-top:1px solid var(--line)}
+.snap figcaption{font-size:13.5px;line-height:1.55;color:var(--muted)}
+.snap figcaption b{color:var(--fg);font-weight:700}
+
 /* ---- макеты «как будет» ---- */
 .demo{display:grid;grid-template-columns:1.35fr .65fr;gap:clamp(16px,2.6vw,30px);align-items:start}
 .mock{border:1px solid var(--line);border-radius:8px;overflow:hidden;background:#0C0C0F;box-shadow:0 26px 60px -30px rgba(0,0,0,.9)}
@@ -288,6 +296,7 @@ footer .wrap{padding-block:26px;display:flex;flex-wrap:wrap;gap:8px 20px;align-i
 .col .num{font-family:var(--d);font-weight:800;font-size:11px;letter-spacing:.14em;color:var(--dim)}
 
 @media (max-width:880px){
+  .shots{grid-template-columns:1fr}
   .demo{grid-template-columns:1fr}
   .mini{grid-template-columns:1fr}
   .mini .pic{aspect-ratio:16/10;order:-1}
@@ -359,7 +368,7 @@ footer .wrap{padding-block:26px;display:flex;flex-wrap:wrap;gap:8px 20px;align-i
       </div>
       <div class="fact bad">
         <b>0</b>
-        <span>форм на сайте. Ни один контакт не сохраняется — всё упирается в Direct</span>
+        <span>работающих кнопок и форм на сайте. Записаться на консультацию с него нельзя</span>
       </div>
       <div class="fact bad">
         <b>1</b>
@@ -411,18 +420,56 @@ footer .wrap{padding-block:26px;display:flex;flex-wrap:wrap;gap:8px 20px;align-i
       </article>
 
       <article class="ev">
+        <span class="tag">Кнопка «Записатись»</span>
+        <code>&lt;a href="#"&gt;Записатись&lt;/a&gt;</code>
+        <p>Это пустая ссылка. Не «ведёт не туда» — она не делает вообще ничего, страница просто дёргается вверх. Записаться на консультацию с твоего сайта физически невозможно.</p>
+      </article>
+
+      <article class="ev">
         <span class="tag">Форма заявки</span>
-        <code>&lt;form&gt; — 0 штук на странице</code>
-        <p>Кнопка «Записатись» ведёт на якорь ниже. Кто не написал в Direct в ту же минуту — потерян, и мы даже не знаем, сколько их было.</p>
+        <code>&lt;form&gt; — 0 штук<br>&lt;input&gt; — 0 штук</code>
+        <p>На всей странице нет ни одного поля ввода. Сайт не может принять ни заявку, ни почту, ни телефон. Кто не написал в Direct в ту же минуту — потерян, и мы даже не знаем, сколько их было.</p>
       </article>
     </div>
 
+    <div class="shots">
+      <div class="shots-head">
+        <span class="eyebrow">Снимок экрана, сделан сегодня</span>
+        <h3 style="margin-top:9px">Так твой сайт открывается с компьютера</h3>
+        <p class="small" style="margin-top:9px">Мы ничего не подкручивали — это обычное окно браузера шириной 1366 точек, самый ходовой размер ноутбука.</p>
+      </div>
+
+      <figure class="snap">
+        <div class="mock">
+          <div class="mock-bar"><i></i><i></i><i></i><span class="url">vitalinkagoncharenko.weblium.site</span></div>
+          <img src="/vitalina/img/site-now-1.jpg" alt="Первый экран сайта на компьютере: заголовок перекрыт текстом прайса">
+        </div>
+        <figcaption>
+          <b>Заголовок «КПТ ПСИХОЛОГ» перекрыт прайсом.</b>
+          Строки «Індивідуальна консультація» и «Пакет на 10 консультацій» легли
+          прямо поверх него — читать невозможно. Внизу через весь экран идёт
+          синяя полоса «This site was made with Weblium. Create your own website».
+        </figcaption>
+      </figure>
+
+      <figure class="snap">
+        <div class="mock">
+          <div class="mock-bar"><i></i><i></i><i></i><span class="url">vitalinkagoncharenko.weblium.site</span></div>
+          <img src="/vitalina/img/site-now-2.jpg" alt="Кнопка «Записатись» на сайте">
+        </div>
+        <figcaption>
+          <b>Та самая кнопка «Записатись».</b>
+          Нажимается, подсвечивается — и ничего не происходит. Сверху снова видно
+          наложение текста, которое тянется с первого экрана.
+        </figcaption>
+      </figure>
+    </div>
+
     <p class="small measure">
-      Плюс поверх страницы — синий баннер «Create your own website» от конструктора,
-      адрес третьего уровня вместо домена, язык страницы в коде помечен как английский,
-      прайс выведен дважды подряд, а гайда на сайте нет вообще. И нет политики
-      конфиденциальности — для психолога это и юридический риск, и одна из частых
-      причин отказов на модерации в Meta.
+      Плюс адрес третьего уровня вместо домена, язык страницы в коде помечен
+      как английский, прайс выведен дважды подряд, а гайда на сайте нет вообще.
+      И нет политики конфиденциальности — для психолога это и юридический риск,
+      и одна из частых причин отказов на модерации в Meta.
     </p>
   </div>
 </section>
@@ -433,8 +480,8 @@ footer .wrap{padding-block:26px;display:flex;flex-wrap:wrap;gap:8px 20px;align-i
   <span class="veil" aria-hidden="true"></span>
   <div class="on">
     <div class="wrap">
-      <span class="eyebrow">Главное расхождение</span>
-      <h2 style="margin-top:12px">Профиль обещает одно, а продукт продаёт <span class="it hotgrad">другое</span></h2>
+      <span class="eyebrow">Про тему гайда</span>
+      <h2 style="margin-top:12px">У тебя была <span class="it hotgrad">правильная</span> тема. Тебе её сбили.</h2>
     </div>
   </div>
 </div>
@@ -444,24 +491,26 @@ footer .wrap{padding-block:26px;display:flex;flex-wrap:wrap;gap:8px 20px;align-i
   <div class="wrap stack">
     <div class="split">
       <div class="side a">
-        <span class="eyebrow">Что обещает твой профиль</span>
-        <div class="quote">Віталіна Гончаренко | Психолог | КПТ | Невроз | Панічні Атаки | ОКР 🇺🇦</div>
-        <p class="small">То же самое — в блоке «Запити» на сайте: невроз, панические атаки, ОКР, ВСД, тревога, ПТСР. Это и есть то, с чем ты реально работаешь и за чем к тебе идут.</p>
+        <span class="eyebrow">Что выбрала ты сама</span>
+        <div class="quote">панические атаки, тревога, ПТСР</div>
+        <p class="small">Это стоит у тебя в шапке профиля — «Невроз | Панічні Атаки | ОКР» — и в блоке «Запити» на сайте. Это то, с чем ты действительно работаешь в КПТ и за чем к тебе идут.</p>
       </div>
 
-      <div class="vs">против</div>
+      <div class="vs">→</div>
 
       <div class="side b">
-        <span class="eyebrow">Куда уехала тема гайда</span>
+        <span class="eyebrow">Что предложили вместо</span>
         <div class="quote">«секс и деньги»</div>
-        <p class="small">В нише психологии это читается как инфоцыганство и обесценивает всё остальное, что ты делаешь. Для рилсов тема работает. Для платного гайда психолога — нет.</p>
+        <p class="small">В нише психологии это читается как инфоцыганство и обесценивает всё остальное, что ты делаешь. Плюс такие формулировки хуже проходят модерацию Meta — то есть рекламировать такой гайд ещё и сложнее.</p>
       </div>
     </div>
 
     <p class="lead measure">
-      Гайд надо строить там, где у тебя экспертность и спрос сходятся:
-      <span class="it hotgrad">паническая атака, тревога, ПТСР</span>. Это запрос,
-      который сейчас есть у каждого второго — и он уже написан у тебя в шапке.
+      Вероника сказала про это прямо: для рилсов тема, может, и зайдёт,
+      но для платного гайда психолога — нет. Возвращаемся к тому,
+      что у тебя было: <span class="it hotgrad">паническая атака, тревога, ПТСР</span>.
+      Это запрос, который сейчас есть у каждого второго, он твой по экспертизе,
+      и он уже написан у тебя в шапке — ничего придумывать не нужно.
     </p>
 
     <div class="feed" aria-label="Публикации из профиля @vitalinka.goncharenko">
@@ -491,6 +540,11 @@ footer .wrap{padding-block:26px;display:flex;flex-wrap:wrap;gap:8px 20px;align-i
     </div>
 
     <div class="flaws">
+      <div class="flaw">
+        <div class="was"><b>Сменить тему гайда на «секс и деньги»</b>У тебя было про панические атаки — то, с чем ты работаешь каждый день.</div>
+        <div class="why">Это самое дорогое из всего списка. Тему, которая была твоей по экспертизе и уже стояла в шапке профиля, поменяли на ту, что в психологии звучит как инфоцыганство. Такой гайд сложнее рекламировать, сложнее защищать перед аудиторией и невозможно продолжить консультацией — он про другое.</div>
+      </div>
+
       <div class="flaw">
         <div class="was"><b>Гайд как закрытый Telegram-канал «за символическую сумму»</b>Доступ продаётся дёшево или вовсе за подписку.</div>
         <div class="why">Символическая цена — приговор продукту: поднять её потом почти невозможно, а аудитория запоминает, сколько стоит твоя экспертиза. И в закрытом канале покупатели видят друг друга и твою посещаемость.</div>
