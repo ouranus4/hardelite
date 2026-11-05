@@ -241,6 +241,57 @@ section[id],div[id]{scroll-margin-top:18px}
 
 footer .wrap{padding-block:26px;display:flex;flex-wrap:wrap;gap:8px 20px;align-items:baseline;border-top:1px solid var(--line)}
 
+/* ---- макет теста ---- */
+.demo--quiz{grid-template-columns:.9fr 1.1fr;align-items:center}
+.quiz{background:#FFFFFF;border-radius:8px;padding:clamp(18px,2.4vw,26px);display:flex;flex-direction:column;gap:12px;box-shadow:0 26px 60px -28px rgba(0,0,0,.9);min-width:0}
+.quiz .q-head{font-size:10px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:#B5433A}
+.quiz b{font-family:var(--d);font-weight:600;font-size:clamp(17px,2.2vw,22px);line-height:1.2;color:#0B0B0C;letter-spacing:-.01em}
+.quiz .q-sub{font-size:13px;line-height:1.5;color:#5C5752;margin:0}
+.quiz .q-row{border-top:1px solid rgba(11,11,12,.12);padding-top:14px;display:flex;flex-direction:column;gap:10px}
+.quiz .q-n{font-size:10.5px;font-weight:800;letter-spacing:.14em;color:#8B8681}
+.quiz .q-row p{font-size:14px;line-height:1.45;color:#0B0B0C;margin:0;font-weight:600}
+.quiz .q-opts{display:flex;flex-wrap:wrap;gap:7px}
+.quiz .q-opts span{border:1px solid rgba(11,11,12,.18);border-radius:100px;padding:7px 13px;font-size:12px;color:#3A3632}
+.quiz .q-opts .on{background:#0B0B0C;border-color:#0B0B0C;color:#fff}
+.quiz .q-btn{align-self:flex-start;background:#B5433A;color:#fff;font-family:var(--d);font-weight:800;font-size:12px;padding:11px 22px;border-radius:100px}
+.plainlist{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:11px}
+.plainlist li{font-size:14.5px;line-height:1.55;color:var(--muted);border-left:2px solid var(--gold);padding-left:14px}
+.plainlist b{color:var(--fg);font-weight:700}
+
+/* ---- взгляд в камеру ---- */
+.gaze{display:grid;grid-template-columns:1fr 1fr;gap:clamp(12px,2vw,18px)}
+.gaze figure{margin:0;min-width:0;display:flex;flex-direction:column;gap:11px}
+.gaze .ph{aspect-ratio:4/5;overflow:hidden;border-radius:5px;border:1px solid var(--line);max-width:100%}
+.gaze img{width:100%;height:100%;object-fit:cover;display:block}
+.gaze .bad .ph{border-color:rgba(255,82,69,.55)}
+.gaze .good .ph{border-color:rgba(255,194,74,.65)}
+.gaze figcaption{font-size:13.5px;line-height:1.5;color:var(--muted)}
+.gaze figcaption b{display:block;color:var(--fg);font-weight:700;margin-bottom:4px}
+
+/* ---- светлый макет лендинга ---- */
+.mock--light .mock-bar{background:#EFECE8;border-bottom-color:rgba(11,11,12,.12)}
+.mock--light .mock-bar i{background:#CFCAC4}
+.mock--light .mock-bar .url{background:#fff;color:#6E6862;border:1px solid rgba(11,11,12,.1)}
+.mini--light{background:#FFFFFF}
+.mini--light .brand{color:#B5433A}
+.mini--light h4{color:#0B0B0C}
+.mini--light p{color:#5C5752}
+.mini--light .fakebtn{background:#0B0B0C;color:#FFF}
+.mini--light .alt{color:#8B8681}
+
+/* ---- экономика и лестница продуктов ---- */
+.why2{display:grid;grid-template-columns:repeat(auto-fit,minmax(272px,1fr));gap:14px}
+.why2 .w{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--hot);border-radius:5px;padding:21px;min-width:0}
+.why2 b{display:block;font-family:var(--d);font-weight:600;font-size:15.5px;line-height:1.3;margin-bottom:10px;letter-spacing:-.01em}
+.why2 p{font-size:14.5px;line-height:1.55;color:var(--muted);margin:0}
+.ladder{display:grid;grid-template-columns:repeat(auto-fit,minmax(206px,1fr));gap:12px;margin:0;padding:0;list-style:none}
+.ladder li{background:linear-gradient(170deg,rgba(255,255,255,.07),rgba(255,255,255,.015));border:1px solid var(--line);border-radius:5px;padding:19px;min-width:0;display:flex;flex-direction:column;gap:8px}
+.ladder li:last-child{border-style:dashed;background:none}
+.ladder .st{font-size:10px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--gold)}
+.ladder li:last-child .st{color:var(--dim)}
+.ladder b{font-family:var(--d);font-weight:600;font-size:17px;letter-spacing:-.01em}
+.ladder p{font-size:13.5px;line-height:1.5;color:var(--muted);margin:0}
+
 /* ---- скриншоты «как сейчас» ---- */
 .shots{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(14px,2.4vw,24px);align-items:start}
 .shots-head{grid-column:1/-1;border-left:3px solid var(--hot);padding-left:16px}
@@ -297,7 +348,8 @@ footer .wrap{padding-block:26px;display:flex;flex-wrap:wrap;gap:8px 20px;align-i
 
 @media (max-width:880px){
   .shots{grid-template-columns:1fr}
-  .demo{grid-template-columns:1fr}
+  .gaze{grid-template-columns:1fr}
+  .demo,.demo--quiz{grid-template-columns:1fr}
   .mini{grid-template-columns:1fr}
   .mini .pic{aspect-ratio:16/10;order:-1}
   .ba{grid-template-columns:1fr}
@@ -380,10 +432,11 @@ footer .wrap{padding-block:26px;display:flex;flex-wrap:wrap;gap:8px 20px;align-i
       <div class="lbl">Что внутри · 6 разделов, минут десять чтения</div>
       <ol>
         <li><a href="#razbor">Что ломается сейчас</a></li>
+        <li><a href="#dengi">Почему гайд — это вход</a></li>
         <li><a href="#primer">Как это будет выглядеть</a></li>
         <li><a href="#nedelya">План на неделю</a></li>
         <li><a href="#vedenie">Что входит в ведение</a></li>
-        <li><a href="#ceny">Сколько стоит</a></li>
+        <li><a href="#ceny">Как это устроено</a></li>
         <li><a href="#cta">Созвон</a></li>
       </ol>
     </nav>
@@ -465,6 +518,36 @@ footer .wrap{padding-block:26px;display:flex;flex-wrap:wrap;gap:8px 20px;align-i
       </figure>
     </div>
 
+    <div class="measure stack-s">
+      <span class="eyebrow">И ещё про фотографии</span>
+      <h3>Взгляд в сторону не продаёт</h3>
+      <p class="small">Для психолога это не придирка. Человек, который решается написать про свои панические атаки, сначала должен поверить, что с тобой не страшно. Доверие начинается с прямого взгляда.</p>
+    </div>
+
+    <div class="gaze">
+      <figure class="bad">
+        <div class="ph"><img src="/vitalina/img/p2.jpg" alt="Фото с сайта: взгляд в сторону" style="object-position:58% 30%"></div>
+        <figcaption><b>Как сейчас на сайте</b>Взгляд уведён в сторону, человек в кадре занят своим. Фото красивое — но оно не обращается к тому, кто смотрит.</figcaption>
+      </figure>
+      <figure class="good">
+        <div class="ph"><img src="/vitalina/img/i3.jpg" alt="Фото из Instagram: взгляд в камеру" style="object-position:50% 18%"></div>
+        <figcaption><b>Как нужно</b>Глаза в глаза. То же лицо, та же ты — но кадр разговаривает с человеком, а не позирует рядом с ним. Такие кадры у тебя уже есть, просто они не на сайте.</figcaption>
+      </figure>
+    </div>
+
+    <div class="measure stack-s">
+      <span class="eyebrow">Что из этого складывается</span>
+      <h3>Ты выглядишь дорого. Твой сайт — <span class="it hotgrad">нет</span>.</h3>
+      <p class="small">
+        В профиле — съёмки, вечерние платья, эфир на СТБ, двадцать пять тысяч человек.
+        Человек переходит по ссылке и попадает на бесплатный шаблон с чужим заголовком,
+        синей плашкой «Create your own website» и кнопкой, которая не работает.
+        Он не формулирует это словами — он просто делает вывод, что контора несерьёзная,
+        и закрывает вкладку. Разрыв между тем, как ты выглядишь, и тем, куда ты
+        приводишь людей, стоит тебе денег каждый день.
+      </p>
+    </div>
+
     <p class="small measure">
       Плюс адрес третьего уровня вместо домена, язык страницы в коде помечен
       как английский, прайс выведен дважды подряд, а гайда на сайте нет вообще.
@@ -480,8 +563,8 @@ footer .wrap{padding-block:26px;display:flex;flex-wrap:wrap;gap:8px 20px;align-i
   <span class="veil" aria-hidden="true"></span>
   <div class="on">
     <div class="wrap">
-      <span class="eyebrow">Про тему гайда</span>
-      <h2 style="margin-top:12px">У тебя была <span class="it hotgrad">правильная</span> тема. Тебе её сбили.</h2>
+      <span class="eyebrow">Про сам гайд</span>
+      <h2 style="margin-top:12px">Гайд у тебя уже есть. Дело <span class="it hotgrad">не в нём</span>.</h2>
     </div>
   </div>
 </div>
@@ -491,26 +574,27 @@ footer .wrap{padding-block:26px;display:flex;flex-wrap:wrap;gap:8px 20px;align-i
   <div class="wrap stack">
     <div class="split">
       <div class="side a">
-        <span class="eyebrow">Что выбрала ты сама</span>
+        <span class="eyebrow">Что есть</span>
         <div class="quote">панические атаки, тревога, ПТСР</div>
-        <p class="small">Это стоит у тебя в шапке профиля — «Невроз | Панічні Атаки | ОКР» — и в блоке «Запити» на сайте. Это то, с чем ты действительно работаешь в КПТ и за чем к тебе идут.</p>
+        <p class="small">Твой рабочий фокус, он же в шапке профиля — «Невроз | Панічні Атаки | ОКР» — и в блоке «Запити» на сайте. Гайд на эту тему у тебя написан. Тема правильная, менять её не нужно.</p>
       </div>
 
-      <div class="vs">→</div>
+      <div class="vs">но</div>
 
       <div class="side b">
-        <span class="eyebrow">Что предложили вместо</span>
-        <div class="quote">«секс и деньги»</div>
-        <p class="small">В нише психологии это читается как инфоцыганство и обесценивает всё остальное, что ты делаешь. Плюс такие формулировки хуже проходят модерацию Meta — то есть рекламировать такой гайд ещё и сложнее.</p>
+        <span class="eyebrow">Что не сработало</span>
+        <div class="quote">он не продался</div>
+        <p class="small">И причина не в теме и не в тексте. Не было двух вещей: пути, по которому человек доходит от сторис до оплаты, и понимания, с каким именно запросом к тебе приходят — какими словами люди описывают свою проблему до того, как узнали слово «КПТ».</p>
       </div>
     </div>
 
     <p class="lead measure">
-      Вероника сказала про это прямо: для рилсов тема, может, и зайдёт,
-      но для платного гайда психолога — нет. Возвращаемся к тому,
-      что у тебя было: <span class="it hotgrad">паническая атака, тревога, ПТСР</span>.
-      Это запрос, который сейчас есть у каждого второго, он твой по экспертизе,
-      и он уже написан у тебя в шапке — ничего придумывать не нужно.
+      Поэтому начинаем не с переписывания гайда, а с твоих же клиентов.
+      Ты надиктуешь, с чем к тебе реально приходят: как формулируют запрос,
+      чего боятся, что уже пробовали. Из этого собирается
+      <span class="it hotgrad">портрет и язык</span>, на котором гайд продаётся.
+      Проверяем на тех, кто уже у тебя есть, и правим по их реакции —
+      а не угадываем на старте.
     </p>
 
     <div class="feed" aria-label="Публикации из профиля @vitalinka.goncharenko">
@@ -527,6 +611,57 @@ footer .wrap{padding-block:26px;display:flex;flex-wrap:wrap;gap:8px 20px;align-i
       которого нет ни на сайте, ни в боте, ни на пути к оплате.
       Вопрос не в том, чтобы снимать больше. Вопрос в том, куда это всё ведёт.
     </p>
+  </div>
+</section>
+
+<!-- ====================== ЭКОНОМИКА ====================== -->
+<section id="dengi">
+  <div class="wrap stack">
+    <div class="measure stack-s">
+      <span class="eyebrow">Про деньги на гайдах</span>
+      <h2>Гайд за десять долларов — это не заработок. Это <span class="it hotgrad">вход</span>.</h2>
+      <p class="small">Проговариваем это до старта, потому что от этого зависит вся схема.</p>
+    </div>
+
+    <div class="why2">
+      <div class="w">
+        <b>На таком чеке не отбить рекламу</b>
+        <p>Пока продаёшь своим подписчикам — всё хорошо, трафик бесплатный. Но как только подключается реклама, привлечение одного покупателя почти всегда стоит дороже самого гайда. Продукт уходит в минус ровно в тот момент, когда ты захочешь расти.</p>
+      </div>
+      <div class="w">
+        <b>Маленький продукт не кормит, а времени забирает столько же</b>
+        <p>Чтобы выйти на ощутимые деньги при цене в десять долларов, нужны сотни продаж каждый месяц. Это другой объём аудитории и другой объём работы — при том, что один час твоей консультации стоит в разы больше.</p>
+      </div>
+    </div>
+
+    <p class="lead measure">
+      Поэтому в нашей схеме гайд — не касса, а первая ступень. Он окупает рекламу,
+      собирает базу и приводит человека туда, где ты
+      <span class="it hotgrad">действительно зарабатываешь</span> — в личную работу.
+    </p>
+
+    <ol class="ladder">
+      <li>
+        <span class="st">Шаг 1</span>
+        <b>Гайд</b>
+        <p>Недорогой вход. Человек получает пользу сразу и убеждается, что ты понимаешь его проблему.</p>
+      </li>
+      <li>
+        <span class="st">Шаг 2</span>
+        <b>Консультация</b>
+        <p>45 или 60 минут. Сюда ведёт и сам гайд внутри, и бот — через несколько дней после покупки.</p>
+      </li>
+      <li>
+        <span class="st">Шаг 3</span>
+        <b>Пакет на 10 сессий</b>
+        <p>Личная работа. Здесь основные деньги и здесь же результат, о котором потом есть что рассказать.</p>
+      </li>
+      <li>
+        <span class="st">Потом</span>
+        <b>Онлайн-продукт</b>
+        <p>Когда наберётся группа и обратная связь — серия видеоуроков. Собирается на твоих же случаях, а не вслепую.</p>
+      </li>
+    </ol>
   </div>
 </section>
 
@@ -584,16 +719,16 @@ footer .wrap{padding-block:26px;display:flex;flex-wrap:wrap;gap:8px 20px;align-i
     <div class="measure stack-s">
       <span class="eyebrow">Как это будет выглядеть</span>
       <h2>Не на словах. Вот <span class="it hotgrad">тот самый</span> путь, собранный целиком</h2>
-      <p class="small">Макеты условные — чтобы было видно логику, а не финальный дизайн. Тексты и визуал собираем под тебя.</p>
+      <p class="small">Макеты условные — чтобы было видно логику, а не финальный дизайн. Страница будет светлой: белый фон, чёрный текст, акцент только на кнопках. У психолога это читается как спокойствие и ясность, а тёмный сайт в теме тревоги работает против тебя.</p>
     </div>
 
     <div class="demo">
-      <div class="mock">
+      <div class="mock mock--light">
         <div class="mock-bar">
           <i></i><i></i><i></i>
           <span class="url">vitalina-goncharenko.com</span>
         </div>
-        <div class="mini">
+        <div class="mini mini--light">
           <div>
             <span class="brand">Віталіна Гончаренко · КПТ-психолог</span>
             <h4>Паническая атака: 10 минут, чтобы вернуть себе контроль</h4>
@@ -642,6 +777,31 @@ footer .wrap{padding-block:26px;display:flex;flex-wrap:wrap;gap:8px 20px;align-i
       </div>
     </div>
     <p class="small measure">Вот так твоя ссылка будет разворачиваться в Direct, в сторис и в Telegram. Это та же самая аудитория, просто она наконец доходит.</p>
+
+    <div class="demo demo--quiz">
+      <div class="quiz">
+        <span class="q-head">Тест · 2 минуты · бесплатно</span>
+        <b>Это паническая атака или тревога?</b>
+        <p class="q-sub">Девять вопросов. В конце — короткий разбор того, что с тобой происходит, и что с этим делать дальше.</p>
+        <div class="q-row">
+          <span class="q-n">1 / 9</span>
+          <p>За последний месяц сердце начинало колотиться без причины?</p>
+          <div class="q-opts"><span class="on">Да, несколько раз</span><span>Один раз</span><span>Нет</span></div>
+        </div>
+        <span class="q-btn">Дальше</span>
+      </div>
+
+      <div class="stack-s">
+        <span class="eyebrow">Зачем это нужно</span>
+        <h3>Интерактив, которого нет ни у кого в нише</h3>
+        <p class="small">Тест — это не украшение. Он решает три задачи сразу:</p>
+        <ul class="plainlist">
+          <li><b>Реклама дешевле.</b> «Пройди тест» нажимают охотнее, чем «купи гайд», и Meta такие формулировки пропускает спокойнее, чем прямое «у вас панические атаки?».</li>
+          <li><b>Человек сам называет свою проблему.</b> К финалу он уже понял, что с ним, и гайд становится ответом, а не продажей в лоб.</li>
+          <li><b>Приходят из поиска.</b> Такие тесты люди гуглят ночью, когда накрыло. Страница начинает приводить людей сама, без бюджета.</li>
+        </ul>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -666,11 +826,13 @@ footer .wrap{padding-block:26px;display:flex;flex-wrap:wrap;gap:8px 20px;align-i
       <div class="day">
         <div class="no">01<small>Понедельник</small></div>
         <div>
-          <h3>Тема, оферта и структура гайда</h3>
+          <h3>Аудитория, оферта и воронка</h3>
           <ul>
+            <li>Ты надиктовываешь, с какими запросами к тебе реально приходят и какими словами люди их описывают</li>
+            <li>Собираем портрет на базе твоих нынешних клиентов, а не на догадках</li>
             <li>Выбираем одну проблему, один результат, одну аудиторию</li>
             <li>Формулируем обещание так, чтобы оно проходило модерацию Meta</li>
-            <li>Собираем оглавление гайда и список того, что нужно от тебя голосовыми</li>
+            <li>Сразу рисуем воронку: куда человек идёт после гайда и чем это заканчивается</li>
           </ul>
         </div>
       </div>
@@ -678,10 +840,10 @@ footer .wrap{padding-block:26px;display:flex;flex-wrap:wrap;gap:8px 20px;align-i
       <div class="day">
         <div class="no">02<small>Вторник</small></div>
         <div>
-          <h3>Сам гайд</h3>
+          <h3>Упаковка гайда</h3>
           <ul>
-            <li>Твой материал превращаем в готовый документ: структура, заголовки, упражнения</li>
-            <li>Обложка и вёрстка в твоём визуале</li>
+            <li>Берём то, что у тебя уже написано, и пересобираем под выбранный запрос</li>
+            <li>Структура, заголовки, упражнения, обложка, вёрстка в твоём визуале</li>
             <li>Внутри — переход к консультации, чтобы гайд был первой ступенью, а не финалом</li>
           </ul>
         </div>
@@ -692,8 +854,11 @@ footer .wrap{padding-block:26px;display:flex;flex-wrap:wrap;gap:8px 20px;align-i
         <div>
           <h3>Лендинг на своём домене</h3>
           <ul>
+            <li>Светлая страница: белый фон, чёрный текст, акцент только на кнопках</li>
             <li>Одна страница: гайд, запись на консультацию, пакет на 10 сессий</li>
+            <li>Твои фото с прямым взглядом в камеру — те, что уже есть в профиле</li>
             <li>Форма, заявки из которой падают сразу в Telegram</li>
+            <li>Интерактивный тест «паническая атака или тревога» — под рекламу и под поиск</li>
             <li>Нормальные заголовок, описание и превью ссылки — чтобы её открывали</li>
             <li>Политика конфиденциальности и согласие на обработку данных</li>
           </ul>
@@ -705,7 +870,7 @@ footer .wrap{padding-block:26px;display:flex;flex-wrap:wrap;gap:8px 20px;align-i
         <div>
           <h3>Оплата и автовыдача</h3>
           <ul>
-            <li>Подключаем платёжную систему: LiqPay, WayForPay, Fondy или Mono</li>
+            <li>Подключаем WayForPay — оплата картой прямо со страницы</li>
             <li>Оплатил — сразу получил гайд. Без проверок вручную и без ожидания</li>
             <li>Название товара в платёжке формулируем так, чтобы не ловить блокировки</li>
           </ul>
@@ -889,25 +1054,23 @@ footer .wrap{padding-block:26px;display:flex;flex-wrap:wrap;gap:8px 20px;align-i
     </div>
 
     <div class="measure stack-s" id="ceny" style="margin-top:clamp(20px,3vw,34px)">
-      <span class="eyebrow">Сколько это стоит</span>
-      <h2>Два счёта, и путать их не надо</h2>
+      <span class="eyebrow">Как это устроено</span>
+      <h2>Два направления, и путать их не надо</h2>
       <p class="small">Это две разные работы, которые делают разные люди. Брать можно обе сразу или только одну.</p>
     </div>
     <div class="price">
       <div class="pr key">
         <span class="eyebrow">Разово · Ольга</span>
         <div class="amount">Упаковка инфопродукта</div>
-        <div class="sum">за запросом</div>
-        <p class="small">Тема и оферта, сам гайд, лендинг на твоём домене, подключение оплаты с автовыдачей, воронка в боте, прогрев и первый запуск на свою аудиторию. Делается один раз и остаётся твоим навсегда — домен, страница, база контактов.</p>
+        <p class="small">Позиционирование и оферта, разбор твоей аудитории, упаковка гайда, светлый лендинг на собственном домене с интерактивным тестом, подключение WayForPay с автовыдачей, воронка в боте и прогрев на первый запуск. Делается один раз и остаётся твоим навсегда — домен, страница, база контактов.</p>
       </div>
       <div class="pr">
         <span class="eyebrow" style="color:var(--muted)">Ежемесячно · Вероника</span>
         <div class="amount">Ведение Instagram</div>
-        <div class="sum">за запросом</div>
         <p class="small">Контент-план, сценарии и съёмки Reels, копирайтинг, оформление профиля, публикации, органическое продвижение и ежемесячная аналитика. Реклама в Meta подключается отдельно, когда страница готова к трафику.</p>
       </div>
     </div>
-    <p class="small measure">Суммы фиксированные, без почасовой. Рекламный бюджет считается отдельно и идёт напрямую в Meta — мы его не берём себе.</p>
+    <p class="small measure">Стоимость по каждому направлению называем на созвоне — когда увидим объём по гайду и по контенту. Рекламный бюджет считается отдельно и идёт напрямую в Meta, мы его себе не берём.</p>
   </div>
 </section>
 
