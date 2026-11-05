@@ -222,6 +222,23 @@ p{margin:0}
 .btn:hover{transform:translateY(-2px);box-shadow:0 22px 44px -14px rgba(255,194,74,.85)}
 .btn:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
 
+.hero-act{display:flex;flex-wrap:wrap;align-items:center;gap:14px 22px;margin-top:26px}
+.plain{color:var(--muted);font-size:13.5px;text-decoration:none;border-bottom:1px solid rgba(155,148,142,.45);padding-bottom:2px}
+.plain:hover{color:var(--gold);border-color:var(--gold)}
+.plain:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
+
+/* ---- оглавление страницы ---- */
+.toc{margin-top:clamp(22px,3vw,34px);border-top:1px solid var(--line);padding-top:16px}
+.toc .lbl{font-size:10px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--dim);margin-bottom:11px}
+.toc ol{display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;list-style:none;counter-reset:t}
+.toc a{display:inline-flex;align-items:baseline;gap:8px;padding:9px 15px;border:1px solid var(--line);border-radius:100px;font-size:13px;color:#DCD6D0;text-decoration:none;transition:border-color .2s,color .2s,background .2s}
+.toc a::before{counter-increment:t;content:counter(t,decimal-leading-zero);font-family:var(--d);font-weight:800;font-size:9.5px;color:var(--gold);letter-spacing:.06em}
+.toc a:hover{border-color:rgba(255,194,74,.6);background:rgba(255,194,74,.08)}
+.toc a:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+
+html{scroll-behavior:smooth}
+section[id],div[id]{scroll-margin-top:18px}
+
 footer .wrap{padding-block:26px;display:flex;flex-wrap:wrap;gap:8px 20px;align-items:baseline;border-top:1px solid var(--line)}
 
 /* ---- макеты «как будет» ---- */
@@ -322,7 +339,10 @@ footer .wrap{padding-block:26px;display:flex;flex-wrap:wrap;gap:8px 20px;align-i
           до кнопки «оплатить». Ниже всё, что по дороге ломается,
           и что из этого чинится за одну неделю.
         </p>
-        <a class="btn" href="#cta" style="margin-top:24px">Разобрать мой запуск</a>
+        <div class="hero-act">
+          <a class="btn" href="#razbor">Посмотреть разбор</a>
+          <a class="plain" href="#cta">или сразу записаться на созвон</a>
+        </div>
       </div>
 
       <div class="shot hero-shot">
@@ -346,6 +366,18 @@ footer .wrap{padding-block:26px;display:flex;flex-wrap:wrap;gap:8px 20px;align-i
         <span>ссылка в шапке, и она открывается чужим превью «Hello, I Am Susan Allen»</span>
       </div>
     </div>
+
+    <nav class="toc" aria-label="Содержание">
+      <div class="lbl">Что внутри · 6 разделов, минут десять чтения</div>
+      <ol>
+        <li><a href="#razbor">Что ломается сейчас</a></li>
+        <li><a href="#primer">Как это будет выглядеть</a></li>
+        <li><a href="#nedelya">План на неделю</a></li>
+        <li><a href="#vedenie">Что входит в ведение</a></li>
+        <li><a href="#ceny">Сколько стоит</a></li>
+        <li><a href="#cta">Созвон</a></li>
+      </ol>
+    </nav>
   </div>
 </header>
 
@@ -357,7 +389,7 @@ footer .wrap{padding-block:26px;display:flex;flex-wrap:wrap;gap:8px 20px;align-i
 </div>
 
 <!-- ====================== УЛИКИ ====================== -->
-<section>
+<section id="razbor">
   <div class="wrap stack">
     <div class="measure stack-s">
       <span class="eyebrow">Что видит человек, который тебя нашёл</span>
@@ -493,7 +525,7 @@ footer .wrap{padding-block:26px;display:flex;flex-wrap:wrap;gap:8px 20px;align-i
 </section>
 
 <!-- ====================== КАК ЭТО БУДЕТ ====================== -->
-<section>
+<section id="primer">
   <div class="wrap stack">
     <div class="measure stack-s">
       <span class="eyebrow">Как это будет выглядеть</span>
@@ -560,7 +592,7 @@ footer .wrap{padding-block:26px;display:flex;flex-wrap:wrap;gap:8px 20px;align-i
 </section>
 
 <!-- ====================== ФОТО-ПОЛОСА 2 ====================== -->
-<div class="strip right">
+<div class="strip right" id="nedelya">
   <img src="/vitalina/img/i5.jpg" alt="Виталина Гончаренко">
   <span class="veil" aria-hidden="true"></span>
   <div class="on">
@@ -703,7 +735,7 @@ footer .wrap{padding-block:26px;display:flex;flex-wrap:wrap;gap:8px 20px;align-i
 </section>
 
 <!-- ====================== СММ ====================== -->
-<section>
+<section id="vedenie">
   <div class="wrap stack">
     <div class="measure stack-s">
       <span class="eyebrow">Вторая половина работы</span>
@@ -802,7 +834,7 @@ footer .wrap{padding-block:26px;display:flex;flex-wrap:wrap;gap:8px 20px;align-i
       <div><b>ФОП и платёжка</b>Если ещё нет — подключение берём на себя.</div>
     </div>
 
-    <div class="measure stack-s" style="margin-top:clamp(20px,3vw,34px)">
+    <div class="measure stack-s" id="ceny" style="margin-top:clamp(20px,3vw,34px)">
       <span class="eyebrow">Сколько это стоит</span>
       <h2>Два счёта, и путать их не надо</h2>
       <p class="small">Это две разные работы, которые делают разные люди. Брать можно обе сразу или только одну.</p>
