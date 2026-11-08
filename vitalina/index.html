@@ -210,6 +210,13 @@ p{margin:0}
 .pr{border:1px solid var(--line);border-radius:5px;padding:24px;display:flex;flex-direction:column;gap:13px;min-width:0;background:var(--card)}
 .pr.key{border-color:rgba(162,107,16,.45);background:linear-gradient(168deg,rgba(162,107,16,.07),rgba(192,57,44,.04))}
 .pr .amount{font-family:var(--d);font-weight:600;font-size:clamp(19px,2.6vw,24px);line-height:1.2}
+.pr .sum{font-family:var(--d);font-weight:800;font-size:clamp(26px,3.6vw,36px);line-height:1.05;font-variant-numeric:tabular-nums;color:var(--fg)}
+.pr .sum i{font-style:normal;font-size:.5em;font-weight:600;color:var(--muted);letter-spacing:.02em}
+.pr.key .sum{background:linear-gradient(97deg,var(--hot),#D98A2B);-webkit-background-clip:text;background-clip:text;color:transparent}
+.pr .split{display:flex;flex-direction:column;gap:7px;border-top:1px solid var(--line);padding-top:12px}
+.pr .split div{display:flex;gap:10px;align-items:baseline;font-size:13.5px;line-height:1.4;color:var(--muted)}
+.pr .split b{color:var(--fg);font-weight:700;font-variant-numeric:tabular-nums;white-space:nowrap}
+.pr .later{align-self:flex-start;font-size:10.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(162,107,16,.4);border-radius:100px;padding:5px 11px}
 .pr .sum{font-family:var(--d);font-weight:800;font-size:clamp(24px,3.4vw,34px);line-height:1.1;font-variant-numeric:tabular-nums;color:var(--muted)}
 .pr.key .sum{background:linear-gradient(97deg,var(--gold),var(--hot));-webkit-background-clip:text;background-clip:text;color:transparent}
 
@@ -454,7 +461,7 @@ footer .wrap{padding-block:26px;display:flex;flex-wrap:wrap;gap:8px 20px;align-i
         <li><a href="#primer">Как это будет выглядеть</a></li>
         <li><a href="#nedelya">План на неделю</a></li>
         <li><a href="#vedenie">Что входит в ведение</a></li>
-        <li><a href="#ceny">Как это устроено</a></li>
+        <li><a href="#ceny">Сколько стоит</a></li>
         <li><a href="#cta">Созвон</a></li>
       </ol>
     </nav>
@@ -1040,58 +1047,60 @@ footer .wrap{padding-block:26px;display:flex;flex-wrap:wrap;gap:8px 20px;align-i
     <div class="measure stack-s">
       <span class="eyebrow">Вторая половина работы</span>
       <h2>Запуск — это разово. <span class="it hotgrad">Ведение</span> — это то, что растит аудиторию дальше</h2>
-      <p class="small">Гайд можно продать один раз на тех, кто уже подписан. Чтобы продавать его постоянно, нужен поток новых людей — и это отдельная работа, которую ведёт Вероника.</p>
+      <p class="small">
+        Это <b style="color:var(--fg)">частичное ведение</b>, не «под ключ».
+        Снимаешь ты сама — у тебя это получается, и отдавать это подрядчику незачем.
+        Вероника берёт на себя то, что решает, посмотрят твой контент или пролистают:
+        стратегию, разбор и всю постобработку.
+      </p>
     </div>
 
     <div class="cols">
       <div class="col">
         <span class="num">01</span>
-        <h3>Instagram под ключ</h3>
+        <h3>Стратегия</h3>
         <ul>
-          <li>Стратегия развития страницы</li>
+          <li>Позиционирование и упаковка профиля</li>
           <li>Контент-план на месяц</li>
           <li>Анализ конкурентов и ниши</li>
-          <li>Сценарии Reels и Stories</li>
-          <li>Копирайтинг всех текстов</li>
+          <li>Темы и идеи для Reels и Stories</li>
           <li>Оформление профиля и актуальных</li>
-          <li>Публикация и органическое продвижение</li>
-          <li>Ежемесячная аналитика и рекомендации</li>
+          <li>Ежемесячная аналитика и выводы</li>
         </ul>
       </div>
 
       <div class="col">
         <span class="num">02</span>
-        <h3>Съёмки и продакшн</h3>
+        <h3>Наставничество</h3>
         <ul>
-          <li>EXPERT REELS DAY — контент-день</li>
-          <li>Готовые сценарии к съёмке</li>
-          <li>Разговорные тексты — что говорить в кадре</li>
-          <li>Постановка речи, подачи и интонации</li>
-          <li>Режиссура кадра, позы и ракурсы</li>
-          <li>Монтаж, обложки, субтитры</li>
-          <li>Цветокоррекция и обработка</li>
-          <li>Контент сразу под Instagram, TikTok и Shorts</li>
+          <li>Разбор того, что уже вышло, по цифрам</li>
+          <li>Что снимать на этой неделе и зачем</li>
+          <li>Как подавать в кадре: речь, темп, интонация</li>
+          <li>Сценарии и разговорные тексты к съёмке</li>
+          <li>Обратная связь по каждому материалу</li>
+          <li>Помощь в контентных решениях между съёмками</li>
         </ul>
       </div>
 
       <div class="col">
         <span class="num">03</span>
-        <h3>Реклама и трафик</h3>
+        <h3>Монтаж и тексты</h3>
         <ul>
-          <li>Meta Ads: Instagram и Facebook</li>
-          <li>Креативы и формулировки под модерацию в психологии</li>
-          <li>Тестирование аудиторий</li>
-          <li>Масштабирование рабочих связок</li>
-          <li>Ретаргет на тех, кто смотрел, но не купил</li>
-          <li>Прозрачная отчётность по цифрам</li>
+          <li>Монтаж Reels из твоих исходников</li>
+          <li>Обложки под единый визуал</li>
+          <li>Субтитры, звук, динамика</li>
+          <li>Копирайтинг: тексты публикаций и Stories</li>
+          <li>Цветокоррекция и обработка</li>
+          <li>Нарезка под Instagram, TikTok и Shorts</li>
         </ul>
       </div>
     </div>
 
     <p class="small measure">
-      Реклама подключается не сразу: сначала 2–3 недели мягкого контента, чтобы
-      страница «успокоилась» после прошлых блокировок, и только потом лидогенерация.
-      Иначе кабинет снова уйдёт в бан, и бюджет сгорит вместе с ним.
+      Отдельно и по желанию: контент-день со съёмкой (EXPERT REELS DAY)
+      и реклама в Meta. Реклама подключается не раньше, чем через 2–3 недели
+      мягкого контента — страница должна «успокоиться» после прошлых блокировок,
+      иначе кабинет снова уйдёт в бан вместе с бюджетом.
     </p>
   </div>
 </section>
@@ -1135,23 +1144,38 @@ footer .wrap{padding-block:26px;display:flex;flex-wrap:wrap;gap:8px 20px;align-i
     </div>
 
     <div class="measure stack-s" id="ceny" style="margin-top:clamp(20px,3vw,34px)">
-      <span class="eyebrow">Как это устроено</span>
-      <h2>Два направления, и путать их не надо</h2>
-      <p class="small">Это две разные работы, которые делают разные люди. Брать можно обе сразу или только одну.</p>
+      <span class="eyebrow">Сколько это стоит</span>
+      <h2>Разово — запуск. Дальше — <span class="it hotgrad">по желанию</span></h2>
+      <p class="small">Разные работы, которые делают разные люди. Брать можно всё сразу или что-то одно.</p>
     </div>
     <div class="price">
       <div class="pr key">
-        <span class="eyebrow">Разово · Ольга</span>
-        <div class="amount">Упаковка инфопродукта</div>
-        <p class="small">Позиционирование и оферта, разбор твоей аудитории, упаковка гайда, светлый лендинг на собственном домене с интерактивным тестом, подключение WayForPay с автовыдачей, воронка в боте и прогрев на первый запуск. Делается один раз и остаётся твоим навсегда — домен, страница, база контактов.</p>
+        <span class="eyebrow">Разово · Ольга Восканян</span>
+        <div class="amount">Упаковка и запуск</div>
+        <div class="sum">700 <i>€</i></div>
+        <div class="split">
+          <div><b>350 €</b> <span>при старте работы</span></div>
+          <div><b>350 €</b> <span>по факту выполненных работ</span></div>
+        </div>
+        <p class="small">Позиционирование и оферта, разбор аудитории, упаковка гайда, светлый лендинг на своём домене с интерактивным тестом, подключение WayForPay с автовыдачей, воронка в боте и прогрев на первый запуск. Делается один раз и остаётся твоим навсегда — домен, страница, база контактов.</p>
       </div>
+
       <div class="pr">
-        <span class="eyebrow" style="color:var(--muted)">Ежемесячно · Вероника</span>
-        <div class="amount">Ведение Instagram</div>
-        <p class="small">Контент-план, сценарии и съёмки Reels, копирайтинг, оформление профиля, публикации, органическое продвижение и ежемесячная аналитика. Реклама в Meta подключается отдельно, когда страница готова к трафику.</p>
+        <span class="eyebrow" style="color:var(--muted)">Ежемесячно · Вероника Логвиненко</span>
+        <div class="amount">Частичное ведение Instagram</div>
+        <div class="sum">300 <i>€ / мес</i></div>
+        <p class="small">Стратегия и контент-план, наставничество и разборы, монтаж Reels из твоих исходников, обложки, субтитры и тексты публикаций. Съёмочный день и реклама в Meta — отдельно и по желанию.</p>
+      </div>
+
+      <div class="pr">
+        <span class="later">Через месяц после запуска</span>
+        <span class="eyebrow" style="color:var(--muted)">Ежемесячно · Ольга Восканян</span>
+        <div class="amount">Ведение воронки</div>
+        <div class="sum">150–200 <i>€ / мес</i></div>
+        <p class="small">Подключается, когда появятся первые честные цифры: аналитика по шагам воронки, докрутка страницы и бота по реальному поведению людей, работа над второй ступенью — переходом в консультации. Сразу брать не нужно: пока нечего мерить, мерить нечего.</p>
       </div>
     </div>
-    <p class="small measure">Стоимость по каждому направлению называем на созвоне — когда увидим объём по гайду и по контенту. Рекламный бюджет считается отдельно и идёт напрямую в Meta, мы его себе не берём.</p>
+    <p class="small measure">Суммы фиксированные, без почасовой. Рекламный бюджет считается отдельно и идёт напрямую в Meta — мы его себе не берём.</p>
   </div>
 </section>
 
