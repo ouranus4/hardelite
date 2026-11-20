@@ -49,7 +49,6 @@ h1{font-family:var(--brand);font-weight:600;font-size:clamp(26px,6vw,38px);line-
 .tag{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
   padding:4px 9px;border-radius:999px;background:var(--paper-2);color:var(--ink-80)}
 .tag--word{background:var(--ink);color:var(--paper)}
-.tag--done{background:#1f7a46;color:#fff}
 .tag--first{background:#b4531f;color:#fff}
 .hookbox{border:1px solid var(--line);border-radius:var(--r);padding:16px 18px;margin:0 0 14px;background:var(--card)}
 .hookbox h4{margin:0 0 4px;font-size:11px;font-weight:700;letter-spacing:.08em;
@@ -134,7 +133,6 @@ footer a{color:var(--ink-80)}
   <footer>
     Тексти сценаріїв — українською, позначки для зйомки й монтажу — робочою мовою.
     Правила зйомки та монтажу — у методичці, продукт і ціни — в оферах.
-    Статус «знято» зберігається тільки на цьому пристрої.
   </footer>
 </div>
 
@@ -358,16 +356,9 @@ const GROUPS = [
   ['pack','Упаковка інфопродуктів']
 ];
 
-function readDone(){
-  try{ return JSON.parse(localStorage.getItem('he_done') || '{}'); }catch(e){ return {}; }
-}
-function writeDone(d){
-  try{ localStorage.setItem('he_done', JSON.stringify(d)); }catch(e){}
-}
 const esc = t => String(t).replace(/[&<>]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
 
 function render(){
-  const done = readDone();
   list.innerHTML = GROUPS.map(([g,label]) => {
     const picked = S.filter(x => x.group === g);
     if(!picked.length) return '';
@@ -379,7 +370,6 @@ function render(){
         <div class="tags">
           <span class="tag tag--word">${esc(x.word)}</span>
           ${x.zone ? `<span class="tag">${esc(x.zone)}</span>` : ''}
-          ${done[x.n] ? '<span class="tag tag--done">Знято</span>' : ''}
         </div>
       </button>`).join('');
     return `<div class="group-title">${label}</div><div class="grid">${items}</div>`;
@@ -389,13 +379,11 @@ function render(){
 function open(n){
   const x = S.find(s => s.n === n); if(!x) return;
   current = x;
-  const done = readDone();
   body.innerHTML = `
     <h1 style="margin-top:22px">${esc(x.title)}</h1>
     <p class="sub" style="margin-bottom:16px">${esc(x.sells)} · ${esc(x.who)} · ${esc(x.len)}</p>
     <div class="status">
-      <button class="btn ${done[x.n] ? 'btn--dark' : ''}" id="toggleDone">${done[x.n] ? '✓ Знято' : 'Позначити як знято'}</button>
-      <span class="tag tag--word" style="align-self:center">Кодове слово: ${esc(x.word)}</span>
+      <span class="tag tag--word">Кодове слово: ${esc(x.word)}</span>
     </div>
     <div class="tabs" role="tablist">
       <button class="tab" role="tab" aria-selected="true" data-pane="say">Текст</button>
@@ -446,12 +434,6 @@ body.addEventListener('click', e => {
   if(t){
     body.querySelectorAll('.tab').forEach(o => o.setAttribute('aria-selected', String(o === t)));
     body.querySelectorAll('.pane').forEach(p => p.classList.toggle('is-on', p.dataset.pane === t.dataset.pane));
-  }
-  if(e.target.id === 'toggleDone' && current){
-    const d = readDone(); d[current.n] = !d[current.n]; writeDone(d);
-    const on = !!d[current.n];
-    e.target.textContent = on ? '✓ Знято' : 'Позначити як знято';
-    e.target.classList.toggle('btn--dark', on);
   }
 });
 $('#back').addEventListener('click', close);
